@@ -64,6 +64,7 @@ const {
         background: rgba(255,255,255,.98);
         border-bottom: 1px solid rgba(16,36,63,.08);
         box-shadow: 0 16px 46px rgba(16,36,63,.08);
+        min-height: 92px;
       }
 
       .dussi-site-header .header-sticky.sticky-bar {
@@ -71,14 +72,27 @@ const {
       }
 
       .dussi-site-header .main-menu ul li {
-        margin: 0 5px;
+        margin: 0;
+      }
+
+      .dussi-site-header .menu-wrapper {
+        flex-wrap: nowrap;
+        min-width: 0;
+      }
+
+      .dussi-site-header .main-menu nav > ul {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: nowrap;
+        white-space: nowrap;
       }
 
       .dussi-site-header .main-menu ul li a {
         color: #10243f;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 800;
-        padding: 35px 10px;
+        padding: 35px 8px;
         letter-spacing: .01em;
       }
 
@@ -88,9 +102,10 @@ const {
       }
 
       .dussi-site-header .header-right-btn .header-btn {
-        padding: 24px 28px;
+        padding: 23px 24px;
         border-radius: 6px;
         box-shadow: 0 14px 30px rgba(255,95,19,.24);
+        white-space: nowrap;
       }
 
       .brand-logo {
@@ -114,6 +129,11 @@ const {
         object-fit: contain;
         border-radius: 14px;
         filter: drop-shadow(0 10px 18px rgba(16,36,63,.12));
+      }
+
+      .preloader-img img {
+        max-width: 64px;
+        border-radius: 12px;
       }
 
       .brand-logo small {
@@ -290,6 +310,15 @@ const {
         padding: 14px 18px;
       }
 
+      .testimonial-founder .founder-img img {
+        width: 62px;
+        height: 62px;
+        object-fit: contain;
+        border-radius: 12px;
+        background: #fff;
+        padding: 4px;
+      }
+
       textarea.form-control {
         min-height: 170px;
       }
@@ -461,6 +490,26 @@ const {
           font-size: 34px;
         }
       }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        .dussi-site-header .header-right-btn {
+          display: none !important;
+        }
+
+        .dussi-site-header .main-menu ul li a {
+          font-size: 14px;
+          padding: 32px 6px;
+        }
+
+        .brand-logo {
+          font-size: 24px;
+        }
+
+        .brand-logo img {
+          width: 62px;
+          height: 62px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -469,7 +518,7 @@ const {
         <div class="preloader-inner position-relative">
           <div class="preloader-circle"></div>
           <div class="preloader-img pere-text">
-            <span class="brand-logo"><span>DT</span></span>
+            <img src="/assets/img/dussi/logo.png" alt={company.shortName} />
           </div>
         </div>
       </div>
