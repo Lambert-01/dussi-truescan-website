@@ -1,12 +1,8 @@
 ---
-const { icon, title, description, href = "/services" } = Astro.props;
+const { title, description, href = "/services" } = Astro.props;
 ---
-<div class="single-cat text-center mb-50">
-    <div class="cat-icon">
-        <span class={icon}></span>
-    </div>
-    <div class="cat-cap">
-        <h5><a href={href}>{title}</a></h5>
-        <p>{description}</p>
-    </div>
-</div>
+<article class="profile-card service-card">
+  <div class="card-mark" aria-hidden="true">{title.slice(0, 2).toUpperCase()}</div>
+  <h3><a href={href}>{title}</a></h3>
+  <p>{description}</p>
+</article>

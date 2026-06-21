@@ -1,17 +1,17 @@
 ---
-const { name, title, image, linkedin = "#" } = Astro.props;
+const { name, title, email, mobile } = Astro.props;
+const initials = name
+  .split(" ")
+  .filter(Boolean)
+  .map((part) => part[0])
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
 ---
-<div class="single-team mb-30 text-center">
-    <div class="team-img">
-        <img src={image} alt={name}>
-        <div class="team-caption">
-            <h3><a href="#">{name}</a></h3>
-            <p>{title}</p>
-            <div class="team-social">
-                <ul>
-                    <li><a href={linkedin}><i class="fab fa-linkedin-in"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<article class="director-card">
+  <div class="director-avatar" aria-hidden="true">{initials}</div>
+  <h3>{name}</h3>
+  <p class="role">{title}</p>
+  {email && <p><a href={`mailto:${email}`}>{email}</a></p>}
+  {mobile && <p>{mobile}</p>}
+</article>

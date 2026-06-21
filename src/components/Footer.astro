@@ -1,89 +1,45 @@
 ---
+import { company, conventionalMethods, industries } from "../data/company";
 ---
-<footer>
-    <div class="footer-area footer-bg">
-        <div class="container">
-            <div class="footer-top footer-padding">
-                <div class="footer-heading">
-                    <div class="row justify-content-between">
-                        <div class="col-xl-6 col-lg-8 col-md-8">
-                            <div class="wantToWork-caption wantToWork-caption2">
-                                <h2>We Deliver Trusted Inspection & Quality Assurance Solutions!</h2>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-4">
-                            <span class="contact-number f-right">+27 (0) 10 001 0000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row d-flex justify-content-between">
-                    <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>COMPANY</h4>
-                                <ul>
-                                    <li><a href="/about">About Us</a></li>
-                                    <li><a href="/leadership">Leadership</a></li>
-                                    <li><a href="/quality">Quality Policy</a></li>
-                                    <li><a href="/contact">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>SERVICES</h4>
-                                <ul>
-                                    <li><a href="/services">Inspection Services</a></li>
-                                    <li><a href="/services">Verification Services</a></li>
-                                    <li><a href="/services">Quality Assurance</a></li>
-                                    <li><a href="/services">Expediting Services</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>INDUSTRIES</h4>
-                                <ul>
-                                    <li><a href="/industries">Mining</a></li>
-                                    <li><a href="/industries">Oil & Gas</a></li>
-                                    <li><a href="/industries">Construction</a></li>
-                                    <li><a href="/industries">Manufacturing</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-logo">
-                                <a href="/"><img src="/images/logo.png" alt="Dussi TrueScan" style="max-height:70px; width:auto; filter:brightness(0) invert(1);"></a>
-                            </div>
-                            <div class="footer-tittle">
-                                <div class="footer-pera">
-                                    <p class="info1">Dussi TrueScan provides world-class inspection, verification and quality assurance services across Africa and internationally.</p>
-                                </div>
-                            </div>
-                            <div class="footer-social">
-                                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                <a href="#"><i class="fab fa-twitter"></i></a>
-                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-12">
-                        <div class="footer-copy-right text-center">
-                            <p>Copyright &copy; {new Date().getFullYear()} Dussi TrueScan. All rights reserved.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <a class="brand-link text-white mb-3" href="/">
+          <span class="brand-mark">DT</span>
+          <span>{company.name}</span>
+        </a>
+        <p>{company.tagline}</p>
+        <p>{company.location}. Serving Rwanda, East Africa, and Central Africa.</p>
+      </div>
+      <div class="col-lg-2 col-md-4">
+        <h4>Company</h4>
+        <ul class="plain-list">
+          <li><a href="/about">About</a></li>
+          <li><a href="/leadership">Leadership</a></li>
+          <li><a href="/quality">Quality</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h4>NDT Methods</h4>
+        <ul class="plain-list">
+          {conventionalMethods.slice(0, 5).map((method) => (
+            <li><a href="/services">{method.title}</a></li>
+          ))}
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-4">
+        <h4>Contact</h4>
+        <p><strong>Phone:</strong> <a href={`tel:${company.phone.replaceAll(" ", "")}`}>{company.phone}</a></p>
+        <p><strong>Mobile:</strong> {company.mobile}</p>
+        <p><strong>Email:</strong> <a href={`mailto:${company.email}`}>{company.email}</a></p>
+        <p><strong>Website:</strong> {company.website}</p>
+      </div>
     </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+    </div>
+  </div>
 </footer>

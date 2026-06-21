@@ -1,0 +1,13 @@
+---
+const { title, text, items = [], eyebrow = "" } = Astro.props;
+---
+<article class="profile-card">
+  {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+  <h3>{title}</h3>
+  {text && <p>{text}</p>}
+  {items.length > 0 && (
+    <ul class="check-list">
+      {items.map((item) => <li>{item}</li>)}
+    </ul>
+  )}
+</article>

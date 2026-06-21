@@ -1,60 +1,36 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import IndustryCard from '../components/IndustryCard.astro';
-
-const industries = [
-    { icon: "flaticon-shipped", title: "Mining & Minerals", description: "Inspection and quality assurance for mining equipment, structural fabrication, process plant and materials procurement." },
-    { icon: "flaticon-ship", title: "Oil & Gas", description: "Specialist inspection services for pipelines, pressure vessels, rotating equipment and offshore/onshore facilities." },
-    { icon: "flaticon-plane", title: "Construction & Infrastructure", description: "QA/QC inspection for civil, structural and mechanical construction projects across South Africa and Africa." },
-    { icon: "flaticon-shipped", title: "Manufacturing", description: "Vendor inspection and supplier surveillance across the manufacturing supply chain — from raw materials to finished goods." },
-    { icon: "flaticon-ship", title: "Power & Energy", description: "Inspection services for power generation equipment, substations, transmission infrastructure and renewable energy projects." },
-    { icon: "flaticon-plane", title: "Water & Sanitation", description: "Inspection and quality assurance for water treatment plants, pipelines and municipal infrastructure projects." }
-];
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import IndustryCard from "../components/IndustryCard.astro";
+import { company, industries } from "../data/company";
 ---
-<MainLayout title="Industries | Dussi TrueScan">
-    <Header activePage="industries" />
-    <main>
-        <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="hero-cap">
-                                <h2>Industries We Serve</h2>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                        <li class="breadcrumb-item"><a href="#">Industries</a></li>
-                                    </ol>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<MainLayout title={`Industries | ${company.name}`}>
+  <Header activePage="industries" />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="hero-kicker">Industries We Serve</span>
+        <h1>Inspection support for critical sectors.</h1>
+        <p>From Kigali, DUSSI TrueScan supports industrial clients across Rwanda, East Africa, and Central Africa.</p>
+      </div>
+    </section>
 
-        <div class="categories-area section-padding30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center mb-80">
-                            <span>Our Sectors</span>
-                            <h2>Industries We Serve Across Africa</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    {industries.map(industry => (
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <IndustryCard icon={industry.icon} title={industry.title} description={industry.description} />
-                        </div>
-                    ))}
-                </div>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="eyebrow">Sectors</span>
+          <h2>Industries covered by our profile</h2>
         </div>
-    </main>
-    <Footer />
+        <div class="row g-4">
+          {industries.map((industry) => (
+            <div class="col-lg-4 col-md-6">
+              <IndustryCard title={industry.title} description={industry.text} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
 </MainLayout>

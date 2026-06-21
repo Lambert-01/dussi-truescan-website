@@ -1,351 +1,147 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import ServiceCard from '../components/ServiceCard.astro';
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import IndustryCard from "../components/IndustryCard.astro";
+import {
+  company,
+  conventionalMethods,
+  consultancyServices,
+  industries,
+  reasons,
+} from "../data/company";
 ---
-<MainLayout title="Dussi TrueScan | Inspection & Quality Assurance">
-    <Header activePage="home" />
-    <main>
-
-        <!-- ======= HERO SLIDER ======= -->
-        <div class="slider-area">
-            <div class="slider-active owl-carousel">
-
-                <!-- Slide 1 — banner1 -->
-                <div class="single-slide" style="
-                    background-image: url('/images/banner1.png');
-                    background-size: cover;
-                    background-position: center;
-                    min-height: 700px;
-                    display: flex;
-                    align-items: center;
-                    position: relative;
-                ">
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.52);"></div>
-                    <div class="container" style="position:relative;z-index:2;">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-9">
-                                <div class="hero__caption">
-                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
-                                        Trusted <span style="color:#e7272d;">Inspection</span> &<br>Quality Assurance
-                                    </h1>
-                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
-                                        Independent, professional inspection and verification services across Africa and internationally.
-                                    </p>
-                                    <a href="/services" class="btn header-btn" style="margin-right:15px;">Our Services</a>
-                                    <a href="/contact" class="btn" style="background:#fff; color:#333;">Get A Quote</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 — banner2 -->
-                <div class="single-slide" style="
-                    background-image: url('/images/banner2.png');
-                    background-size: cover;
-                    background-position: center;
-                    min-height: 700px;
-                    display: flex;
-                    align-items: center;
-                    position: relative;
-                ">
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.50);"></div>
-                    <div class="container" style="position:relative;z-index:2;">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-9">
-                                <div class="hero__caption">
-                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
-                                        <span style="color:#e7272d;">Quality Assurance</span><br>You Can Depend On
-                                    </h1>
-                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
-                                        From mining and oil & gas to construction and manufacturing — we ensure your assets meet the highest standards.
-                                    </p>
-                                    <a href="/about" class="btn header-btn" style="margin-right:15px;">About Us</a>
-                                    <a href="/industries" class="btn" style="background:#fff; color:#333;">Industries We Serve</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 — banner3 -->
-                <div class="single-slide" style="
-                    background-image: url('/images/banner3.png');
-                    background-size: cover;
-                    background-position: center;
-                    min-height: 700px;
-                    display: flex;
-                    align-items: center;
-                    position: relative;
-                ">
-                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.52);"></div>
-                    <div class="container" style="position:relative;z-index:2;">
-                        <div class="row">
-                            <div class="col-xl-8 col-lg-9">
-                                <div class="hero__caption">
-                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
-                                        100% <span style="color:#e7272d;">Black-Owned</span><br>South African Company
-                                    </h1>
-                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
-                                        Proudly South African, Level 1 BBBEE — delivering world-class inspection services with a commitment to transformation.
-                                    </p>
-                                    <a href="/about" class="btn header-btn" style="margin-right:15px;">Our Story</a>
-                                    <a href="/contact" class="btn" style="background:#fff; color:#333;">Contact Us</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+<MainLayout title={`${company.name} | NDT Inspection, Consultancy & Training`}>
+  <Header activePage="home" />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-9">
+            <span class="hero-kicker">Kigali, Rwanda - June 2026</span>
+            <h1>Non-Destructive Testing for safer, stronger assets.</h1>
+            <p>{company.name} provides NDT inspection, technical consultancy, and professional training for construction, energy, mining, manufacturing, infrastructure, and aviation clients across Rwanda and the region.</p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a class="btn-brand" href="/services">Explore Services</a>
+              <a class="btn-light-brand" href="/contact">Contact Us</a>
             </div>
+            <div class="hero-stats">
+              <div class="stat-box">
+                <strong>{company.established}</strong>
+                <span>Year established</span>
+              </div>
+              <div class="stat-box">
+                <strong>8+</strong>
+                <span>NDT methods covered</span>
+              </div>
+              <div class="stat-box">
+                <strong>3</strong>
+                <span>Regional coverage zones</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- ======= END HERO SLIDER ======= -->
+      </div>
+    </section>
 
-        <!-- Info Strip -->
-        <div class="our-info-area pt-70 pb-40">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-info mb-30">
-                            <div class="info-icon"><span class="flaticon-support"></span></div>
-                            <div class="info-caption">
-                                <p>Call Us Anytime</p>
-                                <span>+27 (0) 10 001 0000</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-info mb-30">
-                            <div class="info-icon"><span class="flaticon-clock"></span></div>
-                            <div class="info-caption">
-                                <p>Working Hours</p>
-                                <span>Mon – Fri 8:00 – 17:00</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="single-info mb-30">
-                            <div class="info-icon"><span class="flaticon-place"></span></div>
-                            <div class="info-caption">
-                                <p>Based in South Africa</p>
-                                <span>Serving Africa & Beyond</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="eyebrow">Company Profile</span>
+          <h2>Rwandan-registered NDT inspection, consultancy, and training</h2>
+          <p class="mx-auto">Founded by experienced NDT professionals, DUSSI TrueScan helps clients confirm the safety, reliability, and integrity of critical assets using internationally recognized testing standards and methodologies.</p>
         </div>
-
-        <!-- Services Section -->
-        <div class="categories-area section-padding30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center mb-80">
-                            <span>What We Do</span>
-                            <h2>Our Core Services</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <ServiceCard icon="flaticon-shipped" title="Inspection Services" description="Independent third-party inspection at every stage of the supply chain — from pre-shipment to final delivery." />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <ServiceCard icon="flaticon-ship" title="Verification Services" description="Document verification, quantity surveys and conformity assessment to international standards." />
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <ServiceCard icon="flaticon-plane" title="Quality Assurance" description="Systematic QA programmes ensuring products and processes meet contractual and regulatory requirements." />
-                    </div>
-                </div>
-            </div>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <ServiceCard title="Conventional NDT Methods" description="UT, RT, MT, PT, VT, and ET services for flaw detection, surface examination, and thickness measurement." />
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <ServiceCard title="Advanced NDT Methods" description="PAUT, TOFD, digital radiography, LRUT, and acoustic emission testing for complex inspection needs." />
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <ServiceCard title="Inspection & Consultancy" description="Pressure vessels, storage tanks, pipelines, welds, structural integrity, corrosion mapping, and asset integrity support." />
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- About Section -->
-        <div class="about-low-area padding-bottom">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-12">
-                        <div class="about-caption mb-50">
-                            <div class="section-tittle mb-35">
-                                <span>About Dussi TrueScan</span>
-                                <h2>Independent Inspection & Quality Assurance You Can Trust</h2>
-                            </div>
-                            <p>Dussi TrueScan is a 100% black-owned South African company providing professional inspection, verification and quality assurance services. We are committed to integrity, technical excellence and delivering value to clients across industries.</p>
-                            <p>From mining and oil & gas to construction and manufacturing, our experienced team ensures your assets and supply chain meet the highest standards.</p>
-                            <div style="display:flex; gap:15px; flex-wrap:wrap; margin-top:20px;">
-                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
-                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">100%</strong>
-                                    <span style="font-size:0.8rem;">Black-Owned</span>
-                                </div>
-                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
-                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">L1</strong>
-                                    <span style="font-size:0.8rem;">BBBEE Rating</span>
-                                </div>
-                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
-                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">Pan-</strong>
-                                    <span style="font-size:0.8rem;">African Reach</span>
-                                </div>
-                            </div>
-                            <a href="/about" class="btn" style="margin-top:25px;">More About Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-12">
-                        <!-- Logo as about image -->
-                        <div style="
-                            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-                            border-radius: 12px;
-                            padding: 60px 40px;
-                            text-align: center;
-                            position: relative;
-                            overflow: hidden;
-                        ">
-                            <div style="
-                                position:absolute; top:-40px; right:-40px;
-                                width:200px; height:200px; background:#e7272d;
-                                border-radius:50%; opacity:0.08;
-                            "></div>
-                            <div style="
-                                position:absolute; bottom:-30px; left:-30px;
-                                width:150px; height:150px; background:#e7272d;
-                                border-radius:50%; opacity:0.06;
-                            "></div>
-                            <img
-                                src="/images/logo.png"
-                                alt="Dussi TrueScan"
-                                style="max-width:260px; width:100%; position:relative; z-index:1;"
-                            />
-                            <p style="color:#aaa; margin-top:25px; font-size:0.9rem; position:relative; z-index:1;">
-                                Professional · Independent · Trusted
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <section class="section section-soft">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <div class="col-lg-5">
+            <div class="section-title mb-0">
+              <span class="eyebrow">Methods</span>
+              <h2>Core inspection capabilities</h2>
+              <p>Our team uses calibrated equipment and structured procedures to produce clear, reliable inspection results and practical recommendations.</p>
+              <a class="btn-brand mt-3" href="/services">View All Services</a>
             </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="row g-3">
+              {conventionalMethods.map((method) => (
+                <div class="col-md-6">
+                  <article class="profile-card">
+                    <h3>{method.title}</h3>
+                    <p>{method.text}</p>
+                  </article>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Quote Form -->
-        <section
-            class="contact-form-area section-bg pt-115 pb-120 fix"
-            data-background="/assets/img/gallery/section_bg02.jpg"
-        >
-            <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-xl-8 col-lg-9">
-                        <div class="contact-form-wrapper">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="section-tittle mb-50">
-                                        <span>Free Consultation</span>
-                                        <h2>Request a Free Quote</h2>
-                                        <p>Tell us about your inspection or quality assurance requirements and our team will get back to you promptly.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <form action="#" class="contact-form">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="input-form"><input type="text" placeholder="Your Name"></div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="input-form"><input type="email" placeholder="Email Address"></div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <div class="input-form"><input type="text" placeholder="Contact Number"></div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="select-items">
-                                            <select name="service">
-                                                <option value="">Service Required</option>
-                                                <option value="inspection">Inspection Services</option>
-                                                <option value="verification">Verification Services</option>
-                                                <option value="qa">Quality Assurance</option>
-                                                <option value="expediting">Expediting Services</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="input-form"><input type="text" placeholder="Company / Project"></div>
-                                    </div>
-                                    <div class="col-lg-12">
-                                        <button name="submit" class="submit-btn">Request a Quote</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Why Choose Us / Testimonial -->
-        <div
-            class="testimonial-area testimonial-padding section-bg"
-            data-background="/assets/img/gallery/section_bg04.jpg"
-        >
-            <div class="container">
-                <div class="row justify-content-between align-items-center">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="section-tittle section-tittle2 mb-25">
-                            <span>Why Choose Dussi TrueScan</span>
-                            <h2>Committed to Excellence in Every Inspection</h2>
-                        </div>
-                        <div class="h1-testimonial-active mb-70">
-                            <div class="single-testimonial">
-                                <div class="testimonial-caption">
-                                    <div class="testimonial-top-cap">
-                                        <p>"Dussi TrueScan provided thorough, professional inspection services that gave us complete confidence in our procurement process. Their technical expertise and attention to detail is unmatched."</p>
-                                    </div>
-                                    <div class="testimonial-founder d-flex align-items-center">
-                                        <div class="founder-img">
-                                            <img src="/images/logo.png" alt="Client" style="width:60px;height:60px;object-fit:contain;border-radius:50%;background:#eee;padding:5px;">
-                                        </div>
-                                        <div class="founder-text">
-                                            <span>Project Manager</span>
-                                            <p>Mining Industry Client</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-5 col-md-8">
-                        <div class="testimonial-form text-center">
-                            <h3>Ready to get started?</h3>
-                            <input type="email" placeholder="Your Email Address">
-                            <a href="/contact" class="submit-btn" style="display:block; margin-top:10px; padding:15px; background:#e7272d; color:#fff; border-radius:4px; text-decoration:none;">
-                                Contact Us Today
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <section class="section">
+      <div class="container">
+        <div class="section-title text-center">
+          <span class="eyebrow">Industries</span>
+          <h2>Sectors we serve</h2>
         </div>
+        <div class="row g-4">
+          {industries.slice(0, 6).map((industry) => (
+            <div class="col-lg-4 col-md-6">
+              <IndustryCard title={industry.title} description={industry.text} />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
 
-    </main>
-    <Footer />
+    <section class="section dark-section">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-5">
+            <span class="eyebrow">Why Choose Us</span>
+            <h2>Local expertise, global standards.</h2>
+            <p>DUSSI TrueScan combines fast local response in Rwanda with international methods, certified personnel, safety discipline, and clear reporting.</p>
+          </div>
+          <div class="col-lg-7">
+            <div class="info-panel">
+              <ul class="check-list">
+                {reasons.slice(0, 6).map((reason) => <li>{reason}</li>)}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-sm">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-8">
+            <span class="eyebrow">Ready to inspect?</span>
+            <h2>Talk to DUSSI TrueScan about your project.</h2>
+            <p>Share your inspection, consultancy, or training requirement and our Kigali team will respond with practical next steps.</p>
+          </div>
+          <div class="col-lg-4 text-lg-end">
+            <a class="btn-brand" href="/contact">Request a Quote</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
 </MainLayout>
-
-<script is:inline>
-/* Init Owl Carousel for hero slider once jQuery is ready */
-document.addEventListener('DOMContentLoaded', function () {
-    if (typeof $ !== 'undefined' && $.fn.owlCarousel) {
-        $('.slider-active').owlCarousel({
-            loop: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: true,
-            nav: true,
-            dots: true,
-            items: 1,
-            animateOut: 'fadeOut',
-            navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>'
-            ]
-        });
-    }
-});
-</script>

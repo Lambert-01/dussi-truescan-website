@@ -1,63 +1,432 @@
 ---
-const { title = "Dussi TrueScan | Inspection & Quality Assurance", description = "Dussi TrueScan - Professional Inspection, Verification and Quality Assurance Services across Africa and beyond." } = Astro.props;
+import { company } from "../data/company";
+
+const {
+  title = `${company.name} | Non-Destructive Testing in Rwanda`,
+  description = `${company.name} provides NDT inspection, technical consultancy, and professional training from Kigali, Rwanda.`,
+} = Astro.props;
 ---
 <!doctype html>
-<html class="no-js" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
     <title>{title}</title>
-    <meta name="description" content={description}>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/css/slicknav.css">
-    <link rel="stylesheet" href="/assets/css/flaticon.css">
-    <link rel="stylesheet" href="/assets/css/animate.min.css">
-    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/assets/css/themify-icons.css">
-    <link rel="stylesheet" href="/assets/css/slick.css">
-    <link rel="stylesheet" href="/assets/css/nice-select.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text">
-                    <img src="/images/logo.png" alt="Dussi TrueScan" style="max-width:80px;">
-                </div>
-            </div>
-        </div>
-    </div>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
+    <style>
+      :root {
+        --brand: #b8282f;
+        --brand-dark: #761b22;
+        --navy: #10243f;
+        --ink: #172033;
+        --muted: #667085;
+        --line: #e8edf3;
+        --soft: #f5f7fb;
+        --white: #ffffff;
+      }
 
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+        background: var(--white);
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--brand);
+        text-decoration: none;
+      }
+
+      p {
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+
+      .site-header {
+        background: var(--white);
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        z-index: 20;
+      }
+
+      .topbar {
+        background: var(--navy);
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 0.9rem;
+        padding: 8px 0;
+      }
+
+      .topbar a {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .brand-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 800;
+        letter-spacing: 0.01em;
+        color: var(--navy);
+      }
+
+      .brand-mark {
+        width: 46px;
+        height: 46px;
+        border-radius: 8px;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        background: linear-gradient(135deg, var(--brand), var(--navy));
+        font-weight: 800;
+      }
+
+      .nav-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 16px 0;
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .main-nav a {
+        color: var(--ink);
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      .main-nav a.active,
+      .main-nav a:hover {
+        color: var(--brand);
+      }
+
+      .btn-brand,
+      .btn-light-brand {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 6px;
+        padding: 12px 22px;
+        font-weight: 800;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .btn-brand {
+        color: var(--white);
+        background: var(--brand);
+      }
+
+      .btn-light-brand {
+        color: var(--brand);
+        background: var(--white);
+      }
+
+      .btn-brand:hover,
+      .btn-light-brand:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 30px rgba(16, 36, 63, 0.16);
+      }
+
+      .hero,
+      .page-hero,
+      .dark-section {
+        background:
+          radial-gradient(circle at 18% 20%, rgba(184, 40, 47, 0.22), transparent 30%),
+          linear-gradient(135deg, #10243f 0%, #182f52 58%, #761b22 100%);
+        color: var(--white);
+      }
+
+      .hero {
+        padding: 110px 0 90px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero h1,
+      .page-hero h1,
+      .dark-section h2,
+      .dark-section h3 {
+        color: var(--white);
+      }
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 5vw, 4.7rem);
+        line-height: 1.05;
+        font-weight: 900;
+        margin-bottom: 24px;
+      }
+
+      .hero p {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 1.08rem;
+        max-width: 710px;
+      }
+
+      .hero-kicker,
+      .eyebrow {
+        color: var(--brand);
+        display: inline-block;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        margin-bottom: 10px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 36px;
+      }
+
+      .stat-box {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 8px;
+        padding: 18px;
+      }
+
+      .stat-box strong {
+        display: block;
+        color: var(--white);
+        font-size: 1.6rem;
+        line-height: 1.1;
+      }
+
+      .stat-box span {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 0.85rem;
+      }
+
+      .page-hero {
+        padding: 72px 0;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 900;
+        margin: 0 0 10px;
+      }
+
+      .page-hero p {
+        color: rgba(255, 255, 255, 0.8);
+        max-width: 720px;
+      }
+
+      .section {
+        padding: 82px 0;
+      }
+
+      .section-sm {
+        padding: 56px 0;
+      }
+
+      .section-soft {
+        background: var(--soft);
+      }
+
+      .section-title {
+        margin-bottom: 42px;
+      }
+
+      .section-title h2 {
+        color: var(--navy);
+        font-size: clamp(1.8rem, 3vw, 2.7rem);
+        font-weight: 900;
+        line-height: 1.15;
+        margin: 0;
+      }
+
+      .section-title p {
+        max-width: 760px;
+        margin-top: 14px;
+      }
+
+      .profile-card,
+      .info-panel,
+      .director-card,
+      .blog-card {
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 28px;
+        height: 100%;
+        box-shadow: 0 14px 36px rgba(16, 36, 63, 0.06);
+      }
+
+      .profile-card h3,
+      .director-card h3,
+      .blog-card h3 {
+        color: var(--navy);
+        font-size: 1.22rem;
+        font-weight: 900;
+        margin: 0 0 10px;
+      }
+
+      .card-mark,
+      .director-avatar {
+        width: 54px;
+        height: 54px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: rgba(184, 40, 47, 0.1);
+        color: var(--brand);
+        font-weight: 900;
+        margin-bottom: 18px;
+      }
+
+      .check-list,
+      .plain-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .check-list li,
+      .plain-list li {
+        color: var(--muted);
+        border-bottom: 1px solid var(--line);
+        padding: 11px 0;
+      }
+
+      .check-list li:last-child,
+      .plain-list li:last-child {
+        border-bottom: 0;
+      }
+
+      .check-list li::before {
+        content: "✓";
+        color: var(--brand);
+        font-weight: 900;
+        margin-right: 10px;
+      }
+
+      .fact-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .fact-table th,
+      .fact-table td {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      .fact-table th {
+        width: 34%;
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .fact-table tr:last-child th,
+      .fact-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .contact-panel {
+        background: var(--navy);
+        color: var(--white);
+        border-radius: 8px;
+        padding: 34px;
+        height: 100%;
+      }
+
+      .contact-panel p,
+      .contact-panel a {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .contact-row {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        padding: 14px 0;
+      }
+
+      .contact-row strong {
+        display: block;
+        color: var(--white);
+      }
+
+      .form-control,
+      textarea.form-control,
+      select.form-control {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        min-height: 48px;
+      }
+
+      textarea.form-control {
+        min-height: 150px;
+      }
+
+      .site-footer {
+        background: #0b1a2d;
+        color: rgba(255, 255, 255, 0.8);
+        padding: 62px 0 24px;
+      }
+
+      .site-footer h3,
+      .site-footer h4 {
+        color: var(--white);
+        font-weight: 900;
+      }
+
+      .site-footer a,
+      .site-footer p {
+        color: rgba(255, 255, 255, 0.74);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        margin-top: 36px;
+        padding-top: 22px;
+        text-align: center;
+      }
+
+      @media (max-width: 991px) {
+        .nav-wrap {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .main-nav {
+          justify-content: flex-start;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
     <slot />
-
-    <div id="back-top">
-        <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
-    </div>
-
-    <script is:inline src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script is:inline src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script is:inline src="/assets/js/popper.min.js"></script>
-    <script is:inline src="/assets/js/bootstrap.min.js"></script>
-    <script is:inline src="/assets/js/jquery.slicknav.min.js"></script>
-    <script is:inline src="/assets/js/owl.carousel.min.js"></script>
-    <script is:inline src="/assets/js/slick.min.js"></script>
-    <script is:inline src="/assets/js/wow.min.js"></script>
-    <script is:inline src="/assets/js/animated.headline.js"></script>
-    <script is:inline src="/assets/js/jquery.magnific-popup.js"></script>
-    <script is:inline src="/assets/js/jquery.nice-select.min.js"></script>
-    <script is:inline src="/assets/js/jquery.sticky.js"></script>
-    <script is:inline src="/assets/js/contact.js"></script>
-    <script is:inline src="/assets/js/jquery.form.js"></script>
-    <script is:inline src="/assets/js/jquery.validate.min.js"></script>
-    <script is:inline src="/assets/js/mail-script.js"></script>
-    <script is:inline src="/assets/js/jquery.ajaxchimp.min.js"></script>
-    <script is:inline src="/assets/js/plugins.js"></script>
-    <script is:inline src="/assets/js/main.js"></script>
-</body>
+  </body>
 </html>
