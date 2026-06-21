@@ -1,0 +1,96 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import DirectorProfile from '../components/DirectorProfile.astro';
+
+const directors = [
+    {
+        name: "Director / Founder",
+        title: "Chief Executive Officer",
+        image: "/assets/img/gallery/team1.png"
+    },
+    {
+        name: "Technical Director",
+        title: "Head of Inspection Services",
+        image: "/assets/img/gallery/team2.png"
+    },
+    {
+        name: "Operations Director",
+        title: "Head of Operations",
+        image: "/assets/img/gallery/team3.png"
+    }
+];
+---
+<MainLayout title="Leadership | Dussi TrueScan">
+    <Header activePage="leadership" />
+    <main>
+        <div class="slider-area">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap">
+                                <h2>Our Leadership</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Leadership</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-area section-padding30">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-7 col-lg-8 col-md-10">
+                        <div class="section-tittle text-center mb-70">
+                            <span>Our Leadership Team</span>
+                            <h2>Experienced Professionals Leading with Integrity</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {directors.map(director => (
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <DirectorProfile name={director.name} title={director.title} image={director.image} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <!-- Director Profiles Detail -->
+        <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-60">
+                            <span>Leadership Philosophy</span>
+                            <h2>Driven by Excellence & Transformation</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="contact-form-wrapper" style="background:rgba(255,255,255,0.95); padding:40px; border-radius:8px;">
+                            <p>The Dussi TrueScan leadership team brings together decades of combined experience in inspection, quality assurance and technical services across the mining, oil & gas, construction and manufacturing sectors.</p>
+                            <br>
+                            <p>Our directors are qualified professionals who are deeply committed to transformation, technical excellence and building a company that creates lasting value for clients, employees and the broader South African economy.</p>
+                            <br>
+                            <p>Under their stewardship, Dussi TrueScan has established a reputation for delivering reliable, independent and technically rigorous inspection services that clients trust and depend on.</p>
+                            <br>
+                            <a href="/contact" class="btn">Work With Our Team</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</MainLayout>

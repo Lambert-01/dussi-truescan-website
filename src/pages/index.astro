@@ -1,0 +1,210 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+---
+<MainLayout title="Dussi TrueScan | Home">
+    <Header activePage="home" />
+    <main>
+        <!-- Hero -->
+        <div class="slider-area">
+            <div class="slider-active">
+                <div class="single-slider slider-height d-flex align-items-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-9 col-lg-9">
+                                <div class="hero__caption">
+                                    <h1>Trusted <span>Inspection</span> & Quality Assurance Solutions!</h1>
+                                </div>
+                                <div class="hero-pera">
+                                    <p>Dussi TrueScan — professional, independent inspection and verification services across Africa and internationally.</p>
+                                </div>
+                                <a href="/services" class="btn hero-btn mt-30">Our Services</a>
+                                <a href="/contact" class="btn hero-btn ml-20 mt-30">Get A Quote</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Strip -->
+        <div class="our-info-area pt-70 pb-40">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-info mb-30">
+                            <div class="info-icon"><span class="flaticon-support"></span></div>
+                            <div class="info-caption">
+                                <p>Call Us Anytime</p>
+                                <span>+27 (0) 10 001 0000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-info mb-30">
+                            <div class="info-icon"><span class="flaticon-clock"></span></div>
+                            <div class="info-caption">
+                                <p>Working Hours</p>
+                                <span>Mon - Fri 8:00 - 17:00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-info mb-30">
+                            <div class="info-icon"><span class="flaticon-place"></span></div>
+                            <div class="info-caption">
+                                <p>South Africa</p>
+                                <span>Serving Africa & Beyond</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="categories-area section-padding30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-80">
+                            <span>What We Do</span>
+                            <h2>Our Core Services</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <ServiceCard icon="flaticon-shipped" title="Inspection Services" description="Independent third-party inspection at every stage of the supply chain — from pre-shipment to final delivery." />
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <ServiceCard icon="flaticon-ship" title="Verification Services" description="Document verification, quantity surveys and conformity assessment to international standards." />
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <ServiceCard icon="flaticon-plane" title="Quality Assurance" description="Systematic QA programmes ensuring products and processes meet contractual and regulatory requirements." />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="about-low-area padding-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-caption mb-50">
+                            <div class="section-tittle mb-35">
+                                <span>About Dussi TrueScan</span>
+                                <h2>Independent Inspection & Quality Assurance You Can Trust</h2>
+                            </div>
+                            <p>Dussi TrueScan is a 100% black-owned South African company providing professional inspection, verification and quality assurance services. We are committed to integrity, technical excellence and delivering value to our clients across industries.</p>
+                            <p>From mining and oil & gas to construction and manufacturing, our experienced team ensures your assets and supply chain meet the highest standards.</p>
+                            <a href="/about" class="btn">More About Us</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-img">
+                            <div class="about-font-img">
+                                <img src="/assets/img/gallery/about2.png" alt="About Dussi TrueScan">
+                            </div>
+                            <div class="about-back-img d-none d-lg-block">
+                                <img src="/assets/img/gallery/about1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quote Form -->
+        <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="contact-form-wrapper">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="section-tittle mb-50">
+                                        <span>Free Consultation</span>
+                                        <h2>Request a Free Quote</h2>
+                                        <p>Tell us about your inspection or quality assurance requirements and our team will get back to you promptly.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="#" class="contact-form">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-form"><input type="text" placeholder="Your Name"></div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-form"><input type="email" placeholder="Email Address"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-form"><input type="text" placeholder="Contact Number"></div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="select-items">
+                                            <select name="service">
+                                                <option value="">Service Required</option>
+                                                <option value="inspection">Inspection Services</option>
+                                                <option value="verification">Verification Services</option>
+                                                <option value="qa">Quality Assurance</option>
+                                                <option value="expediting">Expediting Services</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-form"><input type="text" placeholder="Company / Project"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button name="submit" class="submit-btn">Request a Quote</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <div class="testimonial-area testimonial-padding section-bg" data-background="/assets/img/gallery/section_bg04.jpg">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-xl-7 col-lg-7">
+                        <div class="section-tittle section-tittle2 mb-25">
+                            <span>Why Choose Dussi TrueScan</span>
+                            <h2>Committed to Excellence in Every Inspection</h2>
+                        </div>
+                        <div class="h1-testimonial-active mb-70">
+                            <div class="single-testimonial">
+                                <div class="testimonial-caption">
+                                    <div class="testimonial-top-cap">
+                                        <p>"Dussi TrueScan provided thorough, professional inspection services that gave us complete confidence in our procurement process. Their technical expertise and attention to detail is unmatched."</p>
+                                    </div>
+                                    <div class="testimonial-founder d-flex align-items-center">
+                                        <div class="founder-img"><img src="/assets/img/gallery/Homepage_testi.png" alt=""></div>
+                                        <div class="founder-text">
+                                            <span>Project Manager</span>
+                                            <p>Mining Industry Client</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5 col-md-8">
+                        <div class="testimonial-form text-center">
+                            <h3>Ready to get started?</h3>
+                            <input type="text" placeholder="Your Email Address">
+                            <button name="submit" class="submit-btn">Contact Us Today</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</MainLayout>

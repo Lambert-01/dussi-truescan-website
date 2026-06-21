@@ -1,0 +1,123 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+
+const services = [
+    {
+        icon: "flaticon-shipped",
+        title: "Pre-Shipment Inspection",
+        description: "Independent verification of goods before shipment — confirming quality, quantity and compliance with purchase order specifications."
+    },
+    {
+        icon: "flaticon-ship",
+        title: "In-Process Inspection",
+        description: "Monitoring manufacturing and fabrication processes at key hold and witness points to ensure compliance with approved drawings and standards."
+    },
+    {
+        icon: "flaticon-plane",
+        title: "Final Inspection",
+        description: "Comprehensive final inspection and acceptance testing before delivery, ensuring all contractual requirements are satisfied."
+    },
+    {
+        icon: "flaticon-shipped",
+        title: "Expediting Services",
+        description: "Proactive monitoring and follow-up of vendor manufacturing schedules to ensure on-time delivery of critical equipment and materials."
+    },
+    {
+        icon: "flaticon-ship",
+        title: "Document Verification",
+        description: "Review and verification of material test reports, certificates of conformance, weld records and other quality documents."
+    },
+    {
+        icon: "flaticon-plane",
+        title: "Supplier Audits",
+        description: "Assessment of supplier quality management systems, facilities and capabilities against applicable standards and client requirements."
+    }
+];
+---
+<MainLayout title="Services | Dussi TrueScan">
+    <Header activePage="services" />
+    <main>
+        <!-- Page Banner -->
+        <div class="slider-area">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap">
+                                <h2>Our Services</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">Services</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="categories-area section-padding30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-80">
+                            <span>What We Offer</span>
+                            <h2>Professional Inspection & Quality Services</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {services.map(service => (
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <ServiceCard icon={service.icon} title={service.title} description={service.description} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
+            <div class="container">
+                <div class="row justify-content-end">
+                    <div class="col-xl-8 col-lg-9">
+                        <div class="contact-form-wrapper">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="section-tittle mb-50">
+                                        <span>Get Started</span>
+                                        <h2>Request an Inspection Quote</h2>
+                                        <p>Contact us to discuss your inspection requirements and receive a tailored proposal.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <form action="#" class="contact-form">
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-form"><input type="text" placeholder="Your Name"></div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="input-form"><input type="email" placeholder="Email Address"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="input-form"><input type="text" placeholder="Company & Project Description"></div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <button name="submit" class="submit-btn">Request a Quote</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <Footer />
+</MainLayout>

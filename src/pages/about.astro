@@ -1,0 +1,125 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<MainLayout title="About Us | Dussi TrueScan">
+    <Header activePage="about" />
+    <main>
+        <!-- Page Banner -->
+        <div class="slider-area">
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/about.jpg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="hero-cap">
+                                <h2>About Us</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item"><a href="#">About</a></li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Company Overview -->
+        <div class="about-low-area section-padding30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-caption mb-50">
+                            <div class="section-tittle mb-35">
+                                <span>Who We Are</span>
+                                <h2>Dussi TrueScan — A 100% Black-Owned South African Inspection Company</h2>
+                            </div>
+                            <p>Dussi TrueScan (Pty) Ltd is a proudly South African, 100% black-owned company specialising in independent inspection, verification and quality assurance services. We operate across multiple industries and sectors throughout South Africa and the broader African continent.</p>
+                            <p>Our mission is to provide reliable, impartial and technically sound inspection and assurance services that protect the interests of our clients and contribute to safe, compliant and successful projects.</p>
+                            <a href="/contact" class="btn">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="about-img">
+                            <div class="about-font-img">
+                                <img src="/assets/img/gallery/about2.png" alt="About Dussi TrueScan">
+                            </div>
+                            <div class="about-back-img d-none d-lg-block">
+                                <img src="/assets/img/gallery/about1.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vision Mission Values -->
+        <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-80">
+                            <span>Our Foundation</span>
+                            <h2>Vision, Mission & Values</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-cat text-center mb-50" style="background:#fff; padding:30px; border-radius:8px;">
+                            <div class="cat-icon"><span class="flaticon-plane"></span></div>
+                            <div class="cat-cap">
+                                <h5>Our Vision</h5>
+                                <p>To be the leading provider of inspection and quality assurance services in Africa, recognised for excellence, integrity and transformation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-cat text-center mb-50" style="background:#fff; padding:30px; border-radius:8px;">
+                            <div class="cat-icon"><span class="flaticon-shipped"></span></div>
+                            <div class="cat-cap">
+                                <h5>Our Mission</h5>
+                                <p>To deliver independent, professional and technically sound inspection services that add real value to our clients' projects, assets and supply chains.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-cat text-center mb-50" style="background:#fff; padding:30px; border-radius:8px;">
+                            <div class="cat-icon"><span class="flaticon-ship"></span></div>
+                            <div class="cat-cap">
+                                <h5>Our Values</h5>
+                                <p>Integrity, Technical Excellence, Independence, Transformation, Client Focus and Continuous Improvement drive everything we do.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BBBEE & Ownership -->
+        <div class="about-low-area section-padding30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-tittle text-center mb-60">
+                            <span>Transformation</span>
+                            <h2>100% Black-Owned | Level 1 BBBEE</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <p class="text-center">Dussi TrueScan is proud to be a 100% black-owned entity with a Level 1 BBBEE rating. We are committed to meaningful economic transformation and creating opportunities for previously disadvantaged individuals in the technical and professional services sector.</p>
+                        <div class="text-center mt-30">
+                            <a href="/contact" class="btn">Partner With Us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <Footer />
+</MainLayout>

@@ -1,0 +1,12 @@
+---
+const { icon, title, description, href = "/services" } = Astro.props;
+---
+<div class="single-cat text-center mb-50">
+    <div class="cat-icon">
+        <span class={icon}></span>
+    </div>
+    <div class="cat-cap">
+        <h5><a href={href}>{title}</a></h5>
+        <p>{description}</p>
+    </div>
+</div>
