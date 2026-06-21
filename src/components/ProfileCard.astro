@@ -1,7 +1,8 @@
 ---
-const { title, text, items = [], eyebrow = "" } = Astro.props;
+const { title, text, items = [], eyebrow = "", icon = "" } = Astro.props;
 ---
 <article class="profile-card">
+  {icon && <div class="method-icon mb-20"><i class={icon}></i></div>}
   {eyebrow && <span class="eyebrow">{eyebrow}</span>}
   <h3>{title}</h3>
   {text && <p>{text}</p>}

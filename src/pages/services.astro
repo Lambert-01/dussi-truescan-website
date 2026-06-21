@@ -10,6 +10,15 @@ import {
   consultancyServices,
   trainingServices,
 } from "../data/company";
+
+const conventionalIcons = {
+  "Ultrasonic Testing (UT)": "fas fa-wave-square",
+  "Radiographic Testing (RT)": "fas fa-camera-retro",
+  "Magnetic Particle Testing (MT)": "fas fa-magnet",
+  "Liquid Penetrant Testing (PT)": "fas fa-tint",
+  "Visual Testing (VT)": "fas fa-eye",
+  "Eddy Current Testing (ET)": "fas fa-bolt",
+};
 ---
 <MainLayout title={`Services | ${company.name}`}>
   <Header activePage="services" />
@@ -31,7 +40,7 @@ import {
         <div class="row g-4">
           {conventionalMethods.map((method) => (
             <div class="col-lg-4 col-md-6">
-              <ProfileCard title={method.title} text={method.text} />
+              <ProfileCard title={method.title} text={method.text} icon={conventionalIcons[method.title]} />
             </div>
           ))}
         </div>
@@ -43,6 +52,7 @@ import {
         <div class="row g-4">
           <div class="col-lg-4">
             <ProfileCard
+              icon="fas fa-layer-group"
               eyebrow="Advanced NDT"
               title="Specialized methods"
               items={advancedMethods}
@@ -50,6 +60,7 @@ import {
           </div>
           <div class="col-lg-4">
             <ProfileCard
+              icon="fas fa-clipboard-check"
               eyebrow="Inspection & Consultancy"
               title="Asset integrity support"
               items={consultancyServices}
@@ -57,6 +68,7 @@ import {
           </div>
           <div class="col-lg-4">
             <ProfileCard
+              icon="fas fa-user-graduate"
               eyebrow="Training"
               title="Professional development"
               items={trainingServices}

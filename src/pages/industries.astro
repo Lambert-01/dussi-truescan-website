@@ -4,6 +4,16 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import IndustryCard from "../components/IndustryCard.astro";
 import { company, industries } from "../data/company";
+
+const industryIcons = {
+  "Construction & Infrastructure": "fas fa-building",
+  "Energy & Power Generation": "fas fa-bolt",
+  "Mining & Mineral Processing": "fas fa-gem",
+  "Manufacturing": "fas fa-industry",
+  "Water & Sanitation": "fas fa-water",
+  "Oil & Gas (Regional)": "fas fa-gas-pump",
+  "Aviation Industry": "fas fa-plane",
+};
 ---
 <MainLayout title={`Industries | ${company.name}`}>
   <Header activePage="industries" />
@@ -25,7 +35,7 @@ import { company, industries } from "../data/company";
         <div class="row g-4">
           {industries.map((industry) => (
             <div class="col-lg-4 col-md-6">
-              <IndustryCard title={industry.title} description={industry.text} />
+              <IndustryCard title={industry.title} description={industry.text} icon={industryIcons[industry.title]} />
             </div>
           ))}
         </div>
