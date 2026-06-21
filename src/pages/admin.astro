@@ -1,0 +1,369 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import {
+  company,
+  conventionalMethods,
+  advancedMethods,
+  consultancyServices,
+  trainingServices,
+  industries,
+  blogPosts,
+} from "../data/company";
+
+const defaultContent = {
+  company,
+  home: {
+    heroTitle: "Reliable NDT Inspection Solutions!",
+    heroSubtitle: "Non-Destructive Testing | Inspection | Consultancy | Training from Kigali, Rwanda.",
+    aboutTitle: "Rwandan NDT professionals protecting critical assets.",
+    aboutBody:
+      "DUSSI TrueScan KGL. Ltd is a Rwandan-registered Non-Destructive Testing company providing inspection services, technical consultancy, and professional training.",
+  },
+  services: {
+    conventionalMethods,
+    advancedMethods,
+    consultancyServices,
+    trainingServices,
+  },
+  industries,
+  blogPosts,
+};
+---
+<MainLayout title={`Admin Control Panel | ${company.name}`}>
+  <Header activePage="admin" />
+  <main>
+    <section class="page-hero banner-three admin-hero">
+      <div class="container">
+        <span class="hero-kicker">Website Control</span>
+        <h1>DUSSI TrueScan Admin Panel</h1>
+        <p>Manage website content locally, export updates, and keep the public site lightweight with no database.</p>
+      </div>
+    </section>
+
+    <section class="admin-shell section">
+      <div class="container">
+        <div id="admin-login" class="admin-login-card">
+          <div class="section-title text-center mb-30">
+            <span class="eyebrow">Secure Access</span>
+            <h2>Enter Admin Password</h2>
+            <p>Use the password provided for this local control page.</p>
+          </div>
+          <form id="login-form" class="admin-form">
+            <input id="admin-password" class="form-control" type="password" placeholder="Password" autocomplete="current-password" />
+            <button class="btn mt-20" type="submit">Open Control Panel</button>
+            <p id="login-error" class="admin-error" hidden>Wrong password. Try again.</p>
+          </form>
+        </div>
+
+        <div id="admin-app" class="admin-app" hidden>
+          <div class="admin-toolbar">
+            <div>
+              <span class="eyebrow">Control Panel</span>
+              <h2>Website Content Manager</h2>
+              <p>Changes save to this browser. Use Export JSON when you want to apply them to the project files.</p>
+            </div>
+            <div class="admin-actions">
+              <button id="save-btn" class="btn" type="button">Save Local</button>
+              <button id="export-btn" class="btn btn-dark-custom" type="button">Export JSON</button>
+              <button id="reset-btn" class="btn btn-light-custom" type="button">Reset</button>
+              <button id="logout-btn" class="btn btn-light-custom" type="button">Logout</button>
+            </div>
+          </div>
+
+          <div id="save-status" class="admin-status" hidden></div>
+
+          <div class="admin-grid">
+            <aside class="admin-tabs">
+              <button class="active" data-panel="company" type="button"><i class="fas fa-building"></i> Company</button>
+              <button data-panel="home" type="button"><i class="fas fa-home"></i> Home</button>
+              <button data-panel="services" type="button"><i class="fas fa-search"></i> Services</button>
+              <button data-panel="industries" type="button"><i class="fas fa-industry"></i> Industries</button>
+              <button data-panel="blog" type="button"><i class="fas fa-newspaper"></i> Blog</button>
+              <button data-panel="tools" type="button"><i class="fas fa-tools"></i> Import / Export</button>
+            </aside>
+
+            <div class="admin-panels">
+              <section class="admin-panel active" data-panel="company">
+                <h3>Company Details</h3>
+                <div class="admin-fields two-col" id="company-fields"></div>
+              </section>
+
+              <section class="admin-panel" data-panel="home">
+                <h3>Homepage Content</h3>
+                <div class="admin-fields" id="home-fields"></div>
+              </section>
+
+              <section class="admin-panel" data-panel="services">
+                <h3>Services & NDT Methods</h3>
+                <div id="services-fields"></div>
+              </section>
+
+              <section class="admin-panel" data-panel="industries">
+                <h3>Industries</h3>
+                <div id="industries-fields"></div>
+              </section>
+
+              <section class="admin-panel" data-panel="blog">
+                <h3>Blog Cards</h3>
+                <div id="blog-fields"></div>
+              </section>
+
+              <section class="admin-panel" data-panel="tools">
+                <h3>Import / Export Content</h3>
+                <p>Paste exported JSON here to restore a previous content set.</p>
+                <textarea id="import-json" class="form-control admin-json" placeholder="Paste JSON here"></textarea>
+                <div class="mt-20">
+                  <button id="import-btn" class="btn" type="button">Import JSON</button>
+                  <button id="copy-btn" class="btn btn-dark-custom" type="button">Copy Current JSON</button>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <script type="application/json" id="admin-default-content" set:html={JSON.stringify(defaultContent)}></script>
+  <script is:inline>
+    const PASSWORD = "truescan";
+    const AUTH_KEY = "dussiAdminAuth";
+    const CONTENT_KEY = "dussiSiteContent";
+    const defaultContent = JSON.parse(document.getElementById("admin-default-content").textContent);
+
+    let state = loadContent();
+
+    const loginView = document.getElementById("admin-login");
+    const appView = document.getElementById("admin-app");
+    const statusEl = document.getElementById("save-status");
+
+    function loadContent() {
+      try {
+        return JSON.parse(localStorage.getItem(CONTENT_KEY)) || structuredClone(defaultContent);
+      } catch {
+        return structuredClone(defaultContent);
+      }
+    }
+
+    function persist() {
+      localStorage.setItem(CONTENT_KEY, JSON.stringify(state, null, 2));
+      showStatus("Saved locally in this browser.");
+    }
+
+    function showStatus(message, isError = false) {
+      statusEl.textContent = message;
+      statusEl.hidden = false;
+      statusEl.classList.toggle("error", isError);
+      window.setTimeout(() => {
+        statusEl.hidden = true;
+      }, 3200);
+    }
+
+    function openApp() {
+      loginView.hidden = true;
+      appView.hidden = false;
+      renderAll();
+    }
+
+    function field(label, value, onInput, type = "text") {
+      const wrap = document.createElement("label");
+      wrap.className = "admin-field";
+      wrap.innerHTML = `<span>${label}</span>`;
+      const input = document.createElement(type === "textarea" ? "textarea" : "input");
+      input.className = "form-control";
+      input.value = value ?? "";
+      if (type !== "textarea") input.type = type;
+      input.addEventListener("input", () => onInput(input.value));
+      wrap.appendChild(input);
+      return wrap;
+    }
+
+    function renderCompany() {
+      const root = document.getElementById("company-fields");
+      root.innerHTML = "";
+      [
+        ["Company Name", "name"],
+        ["Short Name", "shortName"],
+        ["Tagline", "tagline"],
+        ["Location", "location"],
+        ["Phone", "phone"],
+        ["Mobile", "mobile"],
+        ["Email", "email"],
+        ["Website", "website"],
+        ["Managing Director", "managingDirector"],
+        ["Director Email", "directorEmail"],
+        ["Coverage", "coverage"],
+        ["TIN", "tin"],
+      ].forEach(([label, key]) => {
+        root.appendChild(field(label, state.company[key], (value) => (state.company[key] = value)));
+      });
+    }
+
+    function renderHome() {
+      const root = document.getElementById("home-fields");
+      root.innerHTML = "";
+      root.appendChild(field("Hero Title", state.home.heroTitle, (value) => (state.home.heroTitle = value)));
+      root.appendChild(field("Hero Subtitle", state.home.heroSubtitle, (value) => (state.home.heroSubtitle = value), "textarea"));
+      root.appendChild(field("About Title", state.home.aboutTitle, (value) => (state.home.aboutTitle = value)));
+      root.appendChild(field("About Body", state.home.aboutBody, (value) => (state.home.aboutBody = value), "textarea"));
+    }
+
+    function renderList(rootId, list, labels, addItem) {
+      const root = document.getElementById(rootId);
+      root.innerHTML = "";
+      list.forEach((item, index) => {
+        const card = document.createElement("div");
+        card.className = "admin-list-card";
+        labels.forEach(([label, key, type = "text"]) => {
+          card.appendChild(field(label, item[key], (value) => (item[key] = value), type));
+        });
+        const remove = document.createElement("button");
+        remove.className = "admin-remove";
+        remove.type = "button";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => {
+          list.splice(index, 1);
+          renderAll();
+        });
+        card.appendChild(remove);
+        root.appendChild(card);
+      });
+      const add = document.createElement("button");
+      add.className = "btn mt-20";
+      add.type = "button";
+      add.textContent = "Add New";
+      add.addEventListener("click", () => {
+        list.push(addItem());
+        renderAll();
+      });
+      root.appendChild(add);
+    }
+
+    function renderServices() {
+      const root = document.getElementById("services-fields");
+      root.innerHTML = `
+        <h4>Conventional NDT Methods</h4>
+        <div id="conventional-list"></div>
+        <h4 class="mt-30">Advanced Methods</h4>
+        <div id="advanced-list"></div>
+        <h4 class="mt-30">Consultancy Services</h4>
+        <div id="consultancy-list"></div>
+        <h4 class="mt-30">Training Services</h4>
+        <div id="training-list"></div>
+      `;
+      renderList("conventional-list", state.services.conventionalMethods, [["Title", "title"], ["Description", "text", "textarea"]], () => ({ title: "New NDT Method", text: "Description" }));
+      renderSimpleList("advanced-list", state.services.advancedMethods);
+      renderSimpleList("consultancy-list", state.services.consultancyServices);
+      renderSimpleList("training-list", state.services.trainingServices);
+    }
+
+    function renderSimpleList(rootId, list) {
+      const root = document.getElementById(rootId);
+      root.innerHTML = "";
+      list.forEach((item, index) => {
+        const row = document.createElement("div");
+        row.className = "admin-inline-row";
+        const input = document.createElement("input");
+        input.className = "form-control";
+        input.value = item;
+        input.addEventListener("input", () => (list[index] = input.value));
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "admin-remove";
+        remove.textContent = "Remove";
+        remove.addEventListener("click", () => {
+          list.splice(index, 1);
+          renderAll();
+        });
+        row.append(input, remove);
+        root.appendChild(row);
+      });
+      const add = document.createElement("button");
+      add.className = "btn mt-10";
+      add.type = "button";
+      add.textContent = "Add Item";
+      add.addEventListener("click", () => {
+        list.push("New item");
+        renderAll();
+      });
+      root.appendChild(add);
+    }
+
+    function renderIndustries() {
+      renderList("industries-fields", state.industries, [["Title", "title"], ["Description", "text", "textarea"]], () => ({ title: "New Industry", text: "Description" }));
+    }
+
+    function renderBlog() {
+      renderList("blog-fields", state.blogPosts, [["Category", "category"], ["Title", "title"], ["Excerpt", "excerpt", "textarea"]], () => ({ category: "News", title: "New Blog Post", excerpt: "Summary" }));
+    }
+
+    function renderAll() {
+      renderCompany();
+      renderHome();
+      renderServices();
+      renderIndustries();
+      renderBlog();
+    }
+
+    document.getElementById("login-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const value = document.getElementById("admin-password").value;
+      if (value === PASSWORD) {
+        localStorage.setItem(AUTH_KEY, "true");
+        openApp();
+      } else {
+        document.getElementById("login-error").hidden = false;
+      }
+    });
+
+    document.querySelectorAll(".admin-tabs button").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".admin-tabs button, .admin-panel").forEach((item) => item.classList.remove("active"));
+        button.classList.add("active");
+        document.querySelector(`.admin-panel[data-panel="${button.dataset.panel}"]`).classList.add("active");
+      });
+    });
+
+    document.getElementById("save-btn").addEventListener("click", persist);
+    document.getElementById("reset-btn").addEventListener("click", () => {
+      if (confirm("Reset local admin content to project defaults?")) {
+        state = structuredClone(defaultContent);
+        localStorage.removeItem(CONTENT_KEY);
+        renderAll();
+        showStatus("Reset to defaults.");
+      }
+    });
+    document.getElementById("logout-btn").addEventListener("click", () => {
+      localStorage.removeItem(AUTH_KEY);
+      location.reload();
+    });
+    document.getElementById("export-btn").addEventListener("click", () => {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "dussi-site-content.json";
+      link.click();
+      URL.revokeObjectURL(url);
+    });
+    document.getElementById("copy-btn").addEventListener("click", async () => {
+      await navigator.clipboard.writeText(JSON.stringify(state, null, 2));
+      showStatus("Current JSON copied to clipboard.");
+    });
+    document.getElementById("import-btn").addEventListener("click", () => {
+      try {
+        state = JSON.parse(document.getElementById("import-json").value);
+        persist();
+        renderAll();
+        showStatus("Imported JSON successfully.");
+      } catch {
+        showStatus("Invalid JSON. Please check the pasted content.", true);
+      }
+    });
+
+    if (localStorage.getItem(AUTH_KEY) === "true") openApp();
+  </script>
+</MainLayout>
