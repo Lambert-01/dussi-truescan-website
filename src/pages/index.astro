@@ -4,30 +4,104 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ServiceCard from '../components/ServiceCard.astro';
 ---
-<MainLayout title="Dussi TrueScan | Home">
+<MainLayout title="Dussi TrueScan | Inspection & Quality Assurance">
     <Header activePage="home" />
     <main>
-        <!-- Hero -->
+
+        <!-- ======= HERO SLIDER ======= -->
         <div class="slider-area">
-            <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center">
-                    <div class="container">
+            <div class="slider-active owl-carousel">
+
+                <!-- Slide 1 — banner1 -->
+                <div class="single-slide" style="
+                    background-image: url('/images/banner1.png');
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 700px;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                ">
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.52);"></div>
+                    <div class="container" style="position:relative;z-index:2;">
                         <div class="row">
-                            <div class="col-xl-9 col-lg-9">
+                            <div class="col-xl-8 col-lg-9">
                                 <div class="hero__caption">
-                                    <h1>Trusted <span>Inspection</span> & Quality Assurance Solutions!</h1>
+                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
+                                        Trusted <span style="color:#e7272d;">Inspection</span> &<br>Quality Assurance
+                                    </h1>
+                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
+                                        Independent, professional inspection and verification services across Africa and internationally.
+                                    </p>
+                                    <a href="/services" class="btn header-btn" style="margin-right:15px;">Our Services</a>
+                                    <a href="/contact" class="btn" style="background:#fff; color:#333;">Get A Quote</a>
                                 </div>
-                                <div class="hero-pera">
-                                    <p>Dussi TrueScan — professional, independent inspection and verification services across Africa and internationally.</p>
-                                </div>
-                                <a href="/services" class="btn hero-btn mt-30">Our Services</a>
-                                <a href="/contact" class="btn hero-btn ml-20 mt-30">Get A Quote</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Slide 2 — banner2 -->
+                <div class="single-slide" style="
+                    background-image: url('/images/banner2.png');
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 700px;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                ">
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.50);"></div>
+                    <div class="container" style="position:relative;z-index:2;">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-9">
+                                <div class="hero__caption">
+                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
+                                        <span style="color:#e7272d;">Quality Assurance</span><br>You Can Depend On
+                                    </h1>
+                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
+                                        From mining and oil & gas to construction and manufacturing — we ensure your assets meet the highest standards.
+                                    </p>
+                                    <a href="/about" class="btn header-btn" style="margin-right:15px;">About Us</a>
+                                    <a href="/industries" class="btn" style="background:#fff; color:#333;">Industries We Serve</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 — banner3 -->
+                <div class="single-slide" style="
+                    background-image: url('/images/banner3.png');
+                    background-size: cover;
+                    background-position: center;
+                    min-height: 700px;
+                    display: flex;
+                    align-items: center;
+                    position: relative;
+                ">
+                    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.52);"></div>
+                    <div class="container" style="position:relative;z-index:2;">
+                        <div class="row">
+                            <div class="col-xl-8 col-lg-9">
+                                <div class="hero__caption">
+                                    <h1 style="color:#fff; font-size:3rem; font-weight:700; line-height:1.2;">
+                                        100% <span style="color:#e7272d;">Black-Owned</span><br>South African Company
+                                    </h1>
+                                    <p style="color:#ddd; font-size:1.15rem; margin:20px 0 30px;">
+                                        Proudly South African, Level 1 BBBEE — delivering world-class inspection services with a commitment to transformation.
+                                    </p>
+                                    <a href="/about" class="btn header-btn" style="margin-right:15px;">Our Story</a>
+                                    <a href="/contact" class="btn" style="background:#fff; color:#333;">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+        <!-- ======= END HERO SLIDER ======= -->
 
         <!-- Info Strip -->
         <div class="our-info-area pt-70 pb-40">
@@ -47,7 +121,7 @@ import ServiceCard from '../components/ServiceCard.astro';
                             <div class="info-icon"><span class="flaticon-clock"></span></div>
                             <div class="info-caption">
                                 <p>Working Hours</p>
-                                <span>Mon - Fri 8:00 - 17:00</span>
+                                <span>Mon – Fri 8:00 – 17:00</span>
                             </div>
                         </div>
                     </div>
@@ -55,7 +129,7 @@ import ServiceCard from '../components/ServiceCard.astro';
                         <div class="single-info mb-30">
                             <div class="info-icon"><span class="flaticon-place"></span></div>
                             <div class="info-caption">
-                                <p>South Africa</p>
+                                <p>Based in South Africa</p>
                                 <span>Serving Africa & Beyond</span>
                             </div>
                         </div>
@@ -92,26 +166,60 @@ import ServiceCard from '../components/ServiceCard.astro';
         <!-- About Section -->
         <div class="about-low-area padding-bottom">
             <div class="container">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-lg-6 col-md-12">
                         <div class="about-caption mb-50">
                             <div class="section-tittle mb-35">
                                 <span>About Dussi TrueScan</span>
                                 <h2>Independent Inspection & Quality Assurance You Can Trust</h2>
                             </div>
-                            <p>Dussi TrueScan is a 100% black-owned South African company providing professional inspection, verification and quality assurance services. We are committed to integrity, technical excellence and delivering value to our clients across industries.</p>
+                            <p>Dussi TrueScan is a 100% black-owned South African company providing professional inspection, verification and quality assurance services. We are committed to integrity, technical excellence and delivering value to clients across industries.</p>
                             <p>From mining and oil & gas to construction and manufacturing, our experienced team ensures your assets and supply chain meet the highest standards.</p>
-                            <a href="/about" class="btn">More About Us</a>
+                            <div style="display:flex; gap:15px; flex-wrap:wrap; margin-top:20px;">
+                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
+                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">100%</strong>
+                                    <span style="font-size:0.8rem;">Black-Owned</span>
+                                </div>
+                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
+                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">L1</strong>
+                                    <span style="font-size:0.8rem;">BBBEE Rating</span>
+                                </div>
+                                <div style="text-align:center; padding:15px 20px; border:2px solid #e7272d; border-radius:8px; min-width:100px;">
+                                    <strong style="font-size:1.8rem; color:#e7272d; display:block;">Pan-</strong>
+                                    <span style="font-size:0.8rem;">African Reach</span>
+                                </div>
+                            </div>
+                            <a href="/about" class="btn" style="margin-top:25px;">More About Us</a>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-12">
-                        <div class="about-img">
-                            <div class="about-font-img">
-                                <img src="/assets/img/gallery/about2.png" alt="About Dussi TrueScan">
-                            </div>
-                            <div class="about-back-img d-none d-lg-block">
-                                <img src="/assets/img/gallery/about1.png" alt="">
-                            </div>
+                        <!-- Logo as about image -->
+                        <div style="
+                            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+                            border-radius: 12px;
+                            padding: 60px 40px;
+                            text-align: center;
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                            <div style="
+                                position:absolute; top:-40px; right:-40px;
+                                width:200px; height:200px; background:#e7272d;
+                                border-radius:50%; opacity:0.08;
+                            "></div>
+                            <div style="
+                                position:absolute; bottom:-30px; left:-30px;
+                                width:150px; height:150px; background:#e7272d;
+                                border-radius:50%; opacity:0.06;
+                            "></div>
+                            <img
+                                src="/images/logo.png"
+                                alt="Dussi TrueScan"
+                                style="max-width:260px; width:100%; position:relative; z-index:1;"
+                            />
+                            <p style="color:#aaa; margin-top:25px; font-size:0.9rem; position:relative; z-index:1;">
+                                Professional · Independent · Trusted
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -119,7 +227,10 @@ import ServiceCard from '../components/ServiceCard.astro';
         </div>
 
         <!-- Quote Form -->
-        <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
+        <section
+            class="contact-form-area section-bg pt-115 pb-120 fix"
+            data-background="/assets/img/gallery/section_bg02.jpg"
+        >
             <div class="container">
                 <div class="row justify-content-end">
                     <div class="col-xl-8 col-lg-9">
@@ -169,10 +280,13 @@ import ServiceCard from '../components/ServiceCard.astro';
             </div>
         </section>
 
-        <!-- Why Choose Us -->
-        <div class="testimonial-area testimonial-padding section-bg" data-background="/assets/img/gallery/section_bg04.jpg">
+        <!-- Why Choose Us / Testimonial -->
+        <div
+            class="testimonial-area testimonial-padding section-bg"
+            data-background="/assets/img/gallery/section_bg04.jpg"
+        >
             <div class="container">
-                <div class="row justify-content-between">
+                <div class="row justify-content-between align-items-center">
                     <div class="col-xl-7 col-lg-7">
                         <div class="section-tittle section-tittle2 mb-25">
                             <span>Why Choose Dussi TrueScan</span>
@@ -185,7 +299,9 @@ import ServiceCard from '../components/ServiceCard.astro';
                                         <p>"Dussi TrueScan provided thorough, professional inspection services that gave us complete confidence in our procurement process. Their technical expertise and attention to detail is unmatched."</p>
                                     </div>
                                     <div class="testimonial-founder d-flex align-items-center">
-                                        <div class="founder-img"><img src="/assets/img/gallery/Homepage_testi.png" alt=""></div>
+                                        <div class="founder-img">
+                                            <img src="/images/logo.png" alt="Client" style="width:60px;height:60px;object-fit:contain;border-radius:50%;background:#eee;padding:5px;">
+                                        </div>
                                         <div class="founder-text">
                                             <span>Project Manager</span>
                                             <p>Mining Industry Client</p>
@@ -198,13 +314,38 @@ import ServiceCard from '../components/ServiceCard.astro';
                     <div class="col-xl-4 col-lg-5 col-md-8">
                         <div class="testimonial-form text-center">
                             <h3>Ready to get started?</h3>
-                            <input type="text" placeholder="Your Email Address">
-                            <button name="submit" class="submit-btn">Contact Us Today</button>
+                            <input type="email" placeholder="Your Email Address">
+                            <a href="/contact" class="submit-btn" style="display:block; margin-top:10px; padding:15px; background:#e7272d; color:#fff; border-radius:4px; text-decoration:none;">
+                                Contact Us Today
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
     <Footer />
 </MainLayout>
+
+<script is:inline>
+/* Init Owl Carousel for hero slider once jQuery is ready */
+document.addEventListener('DOMContentLoaded', function () {
+    if (typeof $ !== 'undefined' && $.fn.owlCarousel) {
+        $('.slider-active').owlCarousel({
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            nav: true,
+            dots: true,
+            items: 1,
+            animateOut: 'fadeOut',
+            navText: [
+                '<i class="fas fa-chevron-left"></i>',
+                '<i class="fas fa-chevron-right"></i>'
+            ]
+        });
+    }
+});
+</script>
