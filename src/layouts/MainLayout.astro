@@ -7,425 +7,345 @@ const {
 } = Astro.props;
 ---
 <!doctype html>
-<html lang="en">
+<html class="no-js" lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <title>{title}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/assets/css/slicknav.css" />
+    <link rel="stylesheet" href="/assets/css/flaticon.css" />
+    <link rel="stylesheet" href="/assets/css/animate.min.css" />
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="/assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="/assets/css/slick.css" />
+    <link rel="stylesheet" href="/assets/css/nice-select.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     <style>
       :root {
-        --brand: #b8282f;
-        --brand-dark: #761b22;
-        --navy: #10243f;
-        --ink: #172033;
-        --muted: #667085;
-        --line: #e8edf3;
-        --soft: #f5f7fb;
-        --white: #ffffff;
+        --dussi-red: #c73138;
+        --dussi-blue: #10243f;
+        --dussi-ink: #1d2742;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        color: var(--ink);
-        font-family: Arial, Helvetica, sans-serif;
-        line-height: 1.65;
-        background: var(--white);
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      a:hover {
-        color: var(--brand);
-        text-decoration: none;
-      }
-
-      p {
-        color: var(--muted);
-        margin: 0 0 1rem;
-      }
-
-      .site-header {
-        background: var(--white);
-        border-bottom: 1px solid var(--line);
-        position: sticky;
-        top: 0;
-        z-index: 20;
-      }
-
-      .topbar {
-        background: var(--navy);
-        color: rgba(255, 255, 255, 0.86);
-        font-size: 0.9rem;
-        padding: 8px 0;
-      }
-
-      .topbar a {
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .brand-link {
+      .brand-logo {
         display: inline-flex;
         align-items: center;
-        gap: 12px;
-        font-weight: 800;
-        letter-spacing: 0.01em;
-        color: var(--navy);
+        gap: 10px;
+        color: var(--dussi-blue);
+        font-family: "Teko", sans-serif;
+        font-size: 27px;
+        font-weight: 700;
+        line-height: 1;
       }
 
-      .brand-mark {
-        width: 46px;
-        height: 46px;
-        border-radius: 8px;
+      .brand-logo:hover {
+        color: var(--dussi-blue);
+      }
+
+      .brand-logo span:first-child {
+        width: 52px;
+        height: 52px;
         display: grid;
         place-items: center;
-        color: var(--white);
-        background: linear-gradient(135deg, var(--brand), var(--navy));
-        font-weight: 800;
+        border-radius: 50%;
+        background: var(--dussi-red);
+        color: #fff;
+        font-family: "Barlow", sans-serif;
+        font-size: 16px;
+        letter-spacing: 0;
       }
 
-      .nav-wrap {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        padding: 16px 0;
-      }
-
-      .main-nav {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-      }
-
-      .main-nav a {
-        color: var(--ink);
-        font-weight: 700;
-        font-size: 0.95rem;
-      }
-
-      .main-nav a.active,
-      .main-nav a:hover {
-        color: var(--brand);
-      }
-
-      .btn-brand,
-      .btn-light-brand {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        padding: 12px 22px;
-        font-weight: 800;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .btn-brand {
-        color: var(--white);
-        background: var(--brand);
-      }
-
-      .btn-light-brand {
-        color: var(--brand);
-        background: var(--white);
-      }
-
-      .btn-brand:hover,
-      .btn-light-brand:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 12px 30px rgba(16, 36, 63, 0.16);
-      }
-
-      .hero,
-      .page-hero,
-      .dark-section {
-        background:
-          radial-gradient(circle at 18% 20%, rgba(184, 40, 47, 0.22), transparent 30%),
-          linear-gradient(135deg, #10243f 0%, #182f52 58%, #761b22 100%);
-        color: var(--white);
-      }
-
-      .hero {
-        padding: 110px 0 90px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero h1,
-      .page-hero h1,
-      .dark-section h2,
-      .dark-section h3 {
-        color: var(--white);
-      }
-
-      .hero h1 {
-        font-size: clamp(2.4rem, 5vw, 4.7rem);
-        line-height: 1.05;
-        font-weight: 900;
-        margin-bottom: 24px;
-      }
-
-      .hero p {
-        color: rgba(255, 255, 255, 0.82);
-        font-size: 1.08rem;
-        max-width: 710px;
-      }
-
-      .hero-kicker,
-      .eyebrow {
-        color: var(--brand);
-        display: inline-block;
-        font-weight: 900;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.78rem;
-        margin-bottom: 10px;
-      }
-
-      .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 14px;
-        margin-top: 36px;
-      }
-
-      .stat-box {
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.08);
-        border-radius: 8px;
-        padding: 18px;
-      }
-
-      .stat-box strong {
+      .brand-logo small {
         display: block;
-        color: var(--white);
-        font-size: 1.6rem;
-        line-height: 1.1;
+        color: #6c7487;
+        font-family: "Barlow", sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-top: 3px;
       }
 
-      .stat-box span {
-        color: rgba(255, 255, 255, 0.72);
-        font-size: 0.85rem;
+      .main-menu ul li a.active {
+        color: #f15f22;
+      }
+
+      .slider-area .dussi-slider {
+        background:
+          linear-gradient(rgba(16, 36, 63, 0.76), rgba(16, 36, 63, 0.74)),
+          url("/assets/img/hero/h1_hero.jpg");
+        background-size: cover;
+        background-position: center;
       }
 
       .page-hero {
-        padding: 72px 0;
+        background:
+          linear-gradient(rgba(16, 36, 63, 0.78), rgba(16, 36, 63, 0.78)),
+          url("/assets/img/hero/about.jpg");
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0 110px;
       }
 
       .page-hero h1 {
-        font-size: clamp(2rem, 4vw, 3.2rem);
-        font-weight: 900;
-        margin: 0 0 10px;
+        color: #fff;
+        font-size: 62px;
+        font-weight: 700;
+        margin-bottom: 12px;
       }
 
-      .page-hero p {
-        color: rgba(255, 255, 255, 0.8);
-        max-width: 720px;
+      .page-hero p,
+      .hero__caption p,
+      .hero-pera p {
+        color: rgba(255,255,255,.86);
       }
 
-      .section {
-        padding: 82px 0;
+      .hero__caption h1 span {
+        color: #f15f22;
       }
 
-      .section-sm {
-        padding: 56px 0;
-      }
-
-      .section-soft {
-        background: var(--soft);
-      }
-
-      .section-title {
-        margin-bottom: 42px;
-      }
-
-      .section-title h2 {
-        color: var(--navy);
-        font-size: clamp(1.8rem, 3vw, 2.7rem);
-        font-weight: 900;
-        line-height: 1.15;
-        margin: 0;
-      }
-
-      .section-title p {
+      .dussi-search-box {
+        display: flex;
         max-width: 760px;
-        margin-top: 14px;
+        margin-top: 30px;
+        box-shadow: 0 22px 60px rgba(0,0,0,.18);
       }
 
-      .profile-card,
-      .info-panel,
-      .director-card,
-      .blog-card {
-        background: var(--white);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        padding: 28px;
+      .dussi-search-box .input-form {
+        flex: 1;
+      }
+
+      .dussi-search-box input,
+      .dussi-search-box select {
+        height: 68px;
+        width: 100%;
+        border: 0;
+        padding: 0 24px;
+        color: #2c234d;
+        background: #fff;
+      }
+
+      .dussi-search-box .search-form a,
+      .dussi-search-box button {
+        height: 68px;
+        min-width: 190px;
+        border: 0;
+        background: #f15f22;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .single-cat {
+        height: calc(100% - 50px);
+      }
+
+      .single-cat .cat-cap p,
+      .profile-card p {
+        line-height: 1.7;
+      }
+
+      .profile-card {
+        background: #fff;
+        padding: 36px 32px;
+        border-radius: 6px;
+        box-shadow: 0 10px 30px rgba(35, 47, 85, 0.08);
         height: 100%;
-        box-shadow: 0 14px 36px rgba(16, 36, 63, 0.06);
+      }
+
+      .profile-card .eyebrow,
+      .eyebrow {
+        color: #f15f22;
+        display: inline-block;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 10px;
       }
 
       .profile-card h3,
-      .director-card h3,
-      .blog-card h3 {
-        color: var(--navy);
-        font-size: 1.22rem;
-        font-weight: 900;
-        margin: 0 0 10px;
-      }
-
-      .card-mark,
-      .director-avatar {
-        width: 54px;
-        height: 54px;
-        display: grid;
-        place-items: center;
-        border-radius: 8px;
-        background: rgba(184, 40, 47, 0.1);
-        color: var(--brand);
-        font-weight: 900;
-        margin-bottom: 18px;
+      .blog-card h3,
+      .director-card h3 {
+        color: #2c234d;
+        font-size: 28px;
+        line-height: 1.1;
+        margin-bottom: 14px;
       }
 
       .check-list,
       .plain-list {
         list-style: none;
-        padding: 0;
         margin: 0;
+        padding: 0;
       }
 
       .check-list li,
       .plain-list li {
-        color: var(--muted);
-        border-bottom: 1px solid var(--line);
-        padding: 11px 0;
+        color: #57667e;
+        padding: 10px 0;
+        border-bottom: 1px solid #edf0f5;
       }
 
-      .check-list li:last-child,
-      .plain-list li:last-child {
-        border-bottom: 0;
-      }
-
-      .check-list li::before {
-        content: "OK";
-        color: var(--brand);
+      .check-list li:before {
+        content: "\f00c";
+        font-family: "Font Awesome 5 Free";
         font-weight: 900;
+        color: #f15f22;
         margin-right: 10px;
-        font-size: 0.74rem;
       }
 
       .fact-table {
         width: 100%;
-        border-collapse: collapse;
-        background: var(--white);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 10px 30px rgba(35, 47, 85, 0.08);
       }
 
       .fact-table th,
       .fact-table td {
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--line);
-        vertical-align: top;
+        padding: 16px 18px;
+        border: 1px solid #edf0f5;
       }
 
       .fact-table th {
+        color: #fff;
+        background: var(--dussi-blue);
         width: 34%;
-        background: var(--navy);
-        color: var(--white);
       }
 
-      .fact-table tr:last-child th,
-      .fact-table tr:last-child td {
-        border-bottom: 0;
+      .section,
+      .section-sm {
+        padding-top: 90px;
+        padding-bottom: 90px;
       }
 
-      .contact-panel {
-        background: var(--navy);
-        color: var(--white);
-        border-radius: 8px;
-        padding: 34px;
+      .section-soft {
+        background: #f9f9f9;
+      }
+
+      .section-title {
+        margin-bottom: 45px;
+      }
+
+      .section-title h2 {
+        font-size: 44px;
+        color: #2c234d;
+        line-height: 1.15;
+      }
+
+      .dark-section {
+        background:
+          linear-gradient(rgba(16, 36, 63, .9), rgba(16, 36, 63, .9)),
+          url("/assets/img/gallery/section_bg04.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .dark-section h2,
+      .dark-section p {
+        color: #fff;
+      }
+
+      .contact-panel,
+      .director-card,
+      .blog-card,
+      .info-panel {
+        background: #fff;
+        padding: 36px;
+        box-shadow: 0 10px 30px rgba(35, 47, 85, 0.08);
         height: 100%;
       }
 
-      .contact-panel p,
-      .contact-panel a {
-        color: rgba(255, 255, 255, 0.82);
-      }
-
       .contact-row {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-        padding: 14px 0;
+        padding: 13px 0;
+        border-bottom: 1px solid #edf0f5;
       }
 
       .contact-row strong {
         display: block;
-        color: var(--white);
+        color: #2c234d;
       }
 
-      .form-control,
-      textarea.form-control,
-      select.form-control {
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        min-height: 48px;
+      .director-avatar,
+      .card-mark {
+        width: 78px;
+        height: 78px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #f15f22;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 auto 20px;
       }
 
-      textarea.form-control {
-        min-height: 150px;
-      }
-
-      .site-footer {
-        background: #0b1a2d;
-        color: rgba(255, 255, 255, 0.8);
-        padding: 62px 0 24px;
-      }
-
-      .site-footer h3,
-      .site-footer h4 {
-        color: var(--white);
-        font-weight: 900;
-      }
-
-      .site-footer a,
-      .site-footer p {
-        color: rgba(255, 255, 255, 0.74);
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        margin-top: 36px;
-        padding-top: 22px;
+      .director-card {
         text-align: center;
       }
 
-      @media (max-width: 991px) {
-        .nav-wrap {
-          align-items: flex-start;
-          flex-direction: column;
+      .g-3 > [class*="col-"],
+      .g-4 > [class*="col-"],
+      .g-5 > [class*="col-"] {
+        margin-bottom: 30px;
+      }
+
+      @media (max-width: 767px) {
+        .page-hero h1 {
+          font-size: 42px;
         }
 
-        .main-nav {
-          justify-content: flex-start;
+        .dussi-search-box {
+          display: block;
         }
 
-        .hero-stats {
-          grid-template-columns: 1fr;
+        .dussi-search-box .search-form a,
+        .dussi-search-box button {
+          width: 100%;
+        }
+
+        .section-title h2 {
+          font-size: 34px;
         }
       }
     </style>
   </head>
   <body>
+    <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+          <div class="preloader-circle"></div>
+          <div class="preloader-img pere-text">
+            <span class="brand-logo"><span>DT</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <slot />
+
+    <div id="back-top">
+      <a title="Go to Top" href="#"><i class="fas fa-level-up-alt"></i></a>
+    </div>
+
+    <script is:inline src="/assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script is:inline src="/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script is:inline src="/assets/js/popper.min.js"></script>
+    <script is:inline src="/assets/js/bootstrap.min.js"></script>
+    <script is:inline src="/assets/js/jquery.slicknav.min.js"></script>
+    <script is:inline src="/assets/js/owl.carousel.min.js"></script>
+    <script is:inline src="/assets/js/slick.min.js"></script>
+    <script is:inline src="/assets/js/wow.min.js"></script>
+    <script is:inline src="/assets/js/jquery.sticky.js"></script>
+    <script is:inline src="/assets/js/jquery.nice-select.min.js"></script>
+    <script is:inline src="/assets/js/plugins.js"></script>
+    <script is:inline src="/assets/js/main.js"></script>
   </body>
 </html>

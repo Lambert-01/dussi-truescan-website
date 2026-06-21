@@ -1,45 +1,86 @@
 ---
 import { company, conventionalMethods } from "../data/company";
 ---
-<footer class="site-footer">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <a class="brand-link text-white mb-3" href="/">
-          <span class="brand-mark">DT</span>
-          <span>{company.name}</span>
-        </a>
-        <p>{company.tagline}</p>
-        <p>{company.location}. Serving Rwanda, East Africa, and Central Africa.</p>
+<footer>
+  <div class="footer-area footer-bg">
+    <div class="container">
+      <div class="footer-top footer-padding">
+        <div class="footer-heading">
+          <div class="row justify-content-between">
+            <div class="col-xl-6 col-lg-8 col-md-8">
+              <div class="wantToWork-caption wantToWork-caption2">
+                <h2>NDT Inspection, Consultancy & Training You Can Trust.</h2>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-4">
+              <span class="contact-number f-right">{company.phone}</span>
+            </div>
+          </div>
+        </div>
+        <div class="row d-flex justify-content-between">
+          <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <a class="brand-logo mb-25" href="/" style="color:#fff;">
+                <span>DT</span>
+                <span>{company.shortName}<small style="color:#d7d7d7;">KGL. Ltd</small></span>
+              </a>
+              <div class="footer-tittle">
+                <div class="footer-pera">
+                  <p class="info1">{company.tagline}. Headquartered in {company.location}, serving Rwanda and the wider region.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-2 col-lg-2 col-md-4 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Company</h4>
+                <ul>
+                  <li><a href="/about">About Us</a></li>
+                  <li><a href="/leadership">Leadership</a></li>
+                  <li><a href="/quality">Quality</a></li>
+                  <li><a href="/blog">Blog</a></li>
+                  <li><a href="/contact">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>NDT Methods</h4>
+                <ul>
+                  {conventionalMethods.slice(0, 5).map((method) => (
+                    <li><a href="/services">{method.title}</a></li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-lg-4 col-md-5 col-sm-6">
+            <div class="single-footer-caption mb-50">
+              <div class="footer-tittle">
+                <h4>Contact</h4>
+                <ul>
+                  <li><a href="/contact">{company.location}</a></li>
+                  <li><a href={`tel:${company.phone.replaceAll(" ", "")}`}>{company.phone}</a></li>
+                  <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
+                  <li><a href="/contact">{company.website}</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-2 col-md-4">
-        <h4>Company</h4>
-        <ul class="plain-list">
-          <li><a href="/about">About</a></li>
-          <li><a href="/leadership">Leadership</a></li>
-          <li><a href="/quality">Quality</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
+      <div class="footer-bottom">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-12">
+            <div class="footer-copy-right text-center">
+              <p>Copyright &copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-3 col-md-4">
-        <h4>NDT Methods</h4>
-        <ul class="plain-list">
-          {conventionalMethods.slice(0, 5).map((method) => (
-            <li><a href="/services">{method.title}</a></li>
-          ))}
-        </ul>
-      </div>
-      <div class="col-lg-3 col-md-4">
-        <h4>Contact</h4>
-        <p><strong>Phone:</strong> <a href={`tel:${company.phone.replaceAll(" ", "")}`}>{company.phone}</a></p>
-        <p><strong>Mobile:</strong> {company.mobile}</p>
-        <p><strong>Email:</strong> <a href={`mailto:${company.email}`}>{company.email}</a></p>
-        <p><strong>Website:</strong> {company.website}</p>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>Copyright &copy; {new Date().getFullYear()} {company.name}. All rights reserved.</p>
     </div>
   </div>
 </footer>

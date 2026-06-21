@@ -2,7 +2,6 @@
 import { company } from "../data/company";
 
 const { activePage = "" } = Astro.props;
-
 const navItems = [
   { href: "/", label: "Home", key: "home" },
   { href: "/about", label: "About", key: "about" },
@@ -14,32 +13,64 @@ const navItems = [
   { href: "/contact", label: "Contact", key: "contact" },
 ];
 ---
-<header class="site-header">
-  <div class="topbar d-none d-md-block">
-    <div class="container d-flex justify-content-between">
-      <span>{company.location}</span>
-      <span>
-        <a href={`tel:${company.phone.replaceAll(" ", "")}`}>{company.phone}</a>
-        <span class="mx-2">|</span>
-        <a href={`mailto:${company.email}`}>{company.email}</a>
-      </span>
-    </div>
-  </div>
-  <div class="container">
-    <div class="nav-wrap">
-      <a class="brand-link" href="/" aria-label={`${company.name} home`}>
-        <span class="brand-mark">DT</span>
-        <span>
-          {company.shortName}
-          <small class="d-block text-muted" style="font-weight:700;">KGL. Ltd</small>
-        </span>
-      </a>
-      <nav class="main-nav" aria-label="Main navigation">
-        {navItems.map((item) => (
-          <a href={item.href} class={activePage === item.key ? "active" : ""}>{item.label}</a>
-        ))}
-        <a class="btn-brand" href="/contact">Request Quote</a>
-      </nav>
+<header>
+  <div class="header-area">
+    <div class="main-header">
+      <div class="header-top d-none d-lg-block">
+        <div class="container">
+          <div class="col-xl-12">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="header-info-left">
+                <ul>
+                  <li>Phone: {company.phone}</li>
+                  <li>Email: {company.email}</li>
+                </ul>
+              </div>
+              <div class="header-info-right">
+                <ul class="header-social">
+                  <li><a href="/contact"><i class="fas fa-map-marker-alt"></i></a></li>
+                  <li><a href="/contact"><i class="fas fa-phone"></i></a></li>
+                  <li><a href="/contact"><i class="fas fa-envelope"></i></a></li>
+                  <li><a href="/blog"><i class="fas fa-rss"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom header-sticky">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-xl-3 col-lg-3">
+              <div class="logo">
+                <a class="brand-logo" href="/">
+                  <span>DT</span>
+                  <span>{company.shortName}<small>KGL. Ltd</small></span>
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-9 col-lg-9">
+              <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                <div class="main-menu d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      {navItems.map((item) => (
+                        <li><a href={item.href} class={activePage === item.key ? "active" : ""}>{item.label}</a></li>
+                      ))}
+                    </ul>
+                  </nav>
+                </div>
+                <div class="header-right-btn d-none d-lg-block ml-20">
+                  <a href="/contact" class="btn header-btn">Get A Quote</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </header>
