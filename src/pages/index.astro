@@ -4,143 +4,235 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import IndustryCard from "../components/IndustryCard.astro";
-import {
-  company,
-  conventionalMethods,
-  industries,
-  reasons,
-} from "../data/company";
+import { company, conventionalMethods, industries, reasons, blogPosts } from "../data/company";
 ---
 <MainLayout title={`${company.name} | NDT Inspection, Consultancy & Training`}>
   <Header activePage="home" />
   <main>
-    <section class="hero">
+    <div class="slider-area">
+      <div class="slider-active">
+        <div class="single-slider slider-height dussi-slider d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-9 col-lg-10">
+                <div class="hero__caption">
+                  <h1>Reliable <span>NDT Inspection</span> Solutions!</h1>
+                  <p>{company.tagline} from Kigali, Rwanda.</p>
+                </div>
+                <form action="/contact" class="dussi-search-box">
+                  <div class="input-form">
+                    <input type="text" placeholder="Tell us your asset, weld, tank, pipeline or training need" />
+                  </div>
+                  <div class="search-form">
+                    <a href="/contact">Request Quote</a>
+                  </div>
+                </form>
+                <div class="hero-pera">
+                  <p>Serving Rwanda, East Africa, and Central Africa</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="our-info-area pt-70 pb-40">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-info mb-30">
+              <div class="info-icon"><span class="flaticon-support"></span></div>
+              <div class="info-caption">
+                <p>Call Us Anytime</p>
+                <span>{company.phone}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-info mb-30">
+              <div class="info-icon"><span class="flaticon-clock"></span></div>
+              <div class="info-caption">
+                <p>Established</p>
+                <span>{company.established} | Certified NDT Focus</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="single-info mb-30">
+              <div class="info-icon"><span class="flaticon-place"></span></div>
+              <div class="info-caption">
+                <p>{company.location}</p>
+                <span>{company.coverage}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="categories-area section-padding30">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-tittle text-center mb-80">
+              <span>Our Services</span>
+              <h2>What We Can Do For You</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <ServiceCard icon="flaticon-shipped" title="Conventional NDT" description="UT, RT, MT, PT, VT and ET services for flaw detection, surface examination, and thickness measurement." />
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <ServiceCard icon="flaticon-ship" title="Advanced NDT" description="PAUT, TOFD, digital radiography, LRUT and acoustic emission testing for complex inspection needs." />
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-6">
+            <ServiceCard icon="flaticon-plane" title="Consultancy & Training" description="Asset integrity consultancy, API inspections, weld qualification, NDT training and HSE/QMS courses." />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-low-area padding-bottom">
       <div class="container">
         <div class="row align-items-center">
-          <div class="col-lg-9">
-            <span class="hero-kicker">Kigali, Rwanda - June 2026</span>
-            <h1>Non-Destructive Testing for safer, stronger assets.</h1>
-            <p>{company.name} provides NDT inspection, technical consultancy, and professional training for construction, energy, mining, manufacturing, infrastructure, and aviation clients across Rwanda and the region.</p>
-            <div class="d-flex flex-wrap gap-3 mt-4">
-              <a class="btn-brand" href="/services">Explore Services</a>
-              <a class="btn-light-brand" href="/contact">Contact Us</a>
+          <div class="col-lg-6 col-md-12">
+            <div class="about-caption mb-50">
+              <div class="section-tittle mb-35">
+                <span>About Our Company</span>
+                <h2>Rwandan NDT professionals protecting critical assets.</h2>
+              </div>
+              <p>{company.name} is a Rwandan-registered Non-Destructive Testing company providing inspection services, technical consultancy, and professional training.</p>
+              <p>Our Kigali-based team helps construction, energy, mining, manufacturing, infrastructure, and aviation clients verify safety, reliability, and integrity.</p>
+              <a href="/about" class="btn">More About Us</a>
             </div>
-            <div class="hero-stats">
-              <div class="stat-box">
-                <strong>{company.established}</strong>
-                <span>Year established</span>
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="about-img">
+              <div class="about-font-img">
+                <img src="/assets/img/gallery/about2.png" alt="NDT inspection team" />
               </div>
-              <div class="stat-box">
-                <strong>8+</strong>
-                <span>NDT methods covered</span>
-              </div>
-              <div class="stat-box">
-                <strong>3</strong>
-                <span>Regional coverage zones</span>
+              <div class="about-back-img d-none d-lg-block">
+                <img src="/assets/img/gallery/1.png" alt="" />
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section">
+    <section class="contact-form-area section-bg pt-115 pb-120 fix" data-background="/assets/img/gallery/section_bg02.jpg">
       <div class="container">
-        <div class="section-title text-center">
-          <span class="eyebrow">Company Profile</span>
-          <h2>Rwandan-registered NDT inspection, consultancy, and training</h2>
-          <p class="mx-auto">Founded by experienced NDT professionals, DUSSI TrueScan helps clients confirm the safety, reliability, and integrity of critical assets using internationally recognized testing standards and methodologies.</p>
-        </div>
-        <div class="row g-4">
-          <div class="col-lg-4 col-md-6">
-            <ServiceCard title="Conventional NDT Methods" description="UT, RT, MT, PT, VT, and ET services for flaw detection, surface examination, and thickness measurement." />
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <ServiceCard title="Advanced NDT Methods" description="PAUT, TOFD, digital radiography, LRUT, and acoustic emission testing for complex inspection needs." />
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <ServiceCard title="Inspection & Consultancy" description="Pressure vessels, storage tanks, pipelines, welds, structural integrity, corrosion mapping, and asset integrity support." />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-soft">
-      <div class="container">
-        <div class="row g-4 align-items-start">
-          <div class="col-lg-5">
-            <div class="section-title mb-0">
-              <span class="eyebrow">Methods</span>
-              <h2>Core inspection capabilities</h2>
-              <p>Our team uses calibrated equipment and structured procedures to produce clear, reliable inspection results and practical recommendations.</p>
-              <a class="btn-brand mt-3" href="/services">View All Services</a>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="row g-3">
-              {conventionalMethods.map((method) => (
-                <div class="col-md-6">
-                  <article class="profile-card">
-                    <h3>{method.title}</h3>
-                    <p>{method.text}</p>
-                  </article>
+        <div class="row justify-content-end">
+          <div class="col-xl-8 col-lg-9">
+            <div class="contact-form-wrapper">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="section-tittle mb-50">
+                    <span>Get a Quote For Free</span>
+                    <h2>Request a Free Quote</h2>
+                    <p>Tell us about your inspection, consultancy, or training requirement and our team will respond promptly.</p>
+                  </div>
                 </div>
-              ))}
+              </div>
+              <form action="/contact" class="contact-form">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6"><div class="input-form"><input type="text" placeholder="Name" /></div></div>
+                  <div class="col-lg-6 col-md-6"><div class="input-form"><input type="email" placeholder="Email" /></div></div>
+                  <div class="col-lg-12"><div class="input-form"><input type="text" placeholder="Contact Number" /></div></div>
+                  <div class="col-lg-6">
+                    <div class="select-items">
+                      <select name="service">
+                        <option value="">Service Required</option>
+                        <option>Conventional NDT</option>
+                        <option>Advanced NDT</option>
+                        <option>Inspection Consultancy</option>
+                        <option>Training & Certification</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6"><div class="input-form"><input type="text" placeholder="Company / Project" /></div></div>
+                  <div class="col-lg-12"><button name="submit" class="submit-btn">Request a Quote</button></div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <div class="categories-area section-padding30">
       <div class="container">
-        <div class="section-title text-center">
-          <span class="eyebrow">Industries</span>
-          <h2>Sectors we serve</h2>
+        <div class="section-tittle text-center mb-80">
+          <span>Industries We Serve</span>
+          <h2>Critical Sectors Across The Region</h2>
         </div>
-        <div class="row g-4">
+        <div class="row">
           {industries.slice(0, 6).map((industry) => (
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-4 col-md-6 col-sm-6">
               <IndustryCard title={industry.title} description={industry.text} />
             </div>
           ))}
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section dark-section">
+    <div class="testimonial-area testimonial-padding section-bg" data-background="/assets/img/gallery/section_bg04.jpg">
       <div class="container">
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-5">
-            <span class="eyebrow">Why Choose Us</span>
-            <h2>Local expertise, global standards.</h2>
-            <p>DUSSI TrueScan combines fast local response in Rwanda with international methods, certified personnel, safety discipline, and clear reporting.</p>
+        <div class="row justify-content-between">
+          <div class="col-xl-7 col-lg-7">
+            <div class="section-tittle section-tittle2 mb-25">
+              <span>Why Choose DUSSI TrueScan</span>
+              <h2>Committed to Excellence in Every Inspection</h2>
+            </div>
+            <div class="single-testimonial">
+              <div class="testimonial-caption">
+                <div class="testimonial-top-cap">
+                  <p>{reasons.slice(0, 4).join(". ")}.</p>
+                </div>
+                <div class="testimonial-founder d-flex align-items-center">
+                  <div class="founder-img"><span class="brand-logo"><span>DT</span></span></div>
+                  <div class="founder-text">
+                    <span>{company.managingDirector}</span>
+                    <p>Managing Director</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="col-lg-7">
-            <div class="info-panel">
-              <ul class="check-list">
-                {reasons.slice(0, 6).map((reason) => <li>{reason}</li>)}
-              </ul>
+          <div class="col-xl-4 col-lg-5 col-md-8">
+            <div class="testimonial-form text-center">
+              <h3>Always ready for reliable inspection support.</h3>
+              <input type="text" placeholder={company.email} />
+              <a href="/contact" class="submit-btn d-block">Contact Us Today</a>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <section class="section-sm">
+    <div class="home-blog-area section-padding30">
       <div class="container">
-        <div class="row g-4 align-items-center">
-          <div class="col-lg-8">
-            <span class="eyebrow">Ready to inspect?</span>
-            <h2>Talk to DUSSI TrueScan about your project.</h2>
-            <p>Share your inspection, consultancy, or training requirement and our Kigali team will respond with practical next steps.</p>
-          </div>
-          <div class="col-lg-4 text-lg-end">
-            <a class="btn-brand" href="/contact">Request a Quote</a>
-          </div>
+        <div class="section-tittle text-center mb-70">
+          <span>Our Blog</span>
+          <h2>Inspection & Quality Insights</h2>
+        </div>
+        <div class="row">
+          {blogPosts.map((post) => (
+            <div class="col-lg-4 col-md-6">
+              <article class="profile-card mb-30">
+                <span class="eyebrow">{post.category}</span>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+                <a href="/blog" class="btn mt-20">Read More</a>
+              </article>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </div>
   </main>
   <Footer />
 </MainLayout>
