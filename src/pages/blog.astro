@@ -1,0 +1,36 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { company, blogPosts } from "../data/company";
+---
+<MainLayout title={`Blog | ${company.name}`}>
+  <Header activePage="blog" />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <span class="hero-kicker">Blog</span>
+        <h1>NDT notes, inspection guidance, and quality insights.</h1>
+        <p>Short articles based on DUSSI TrueScan's work in non-destructive testing, inspection, consultancy, and training.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="row g-4">
+          {blogPosts.map((post) => (
+            <div class="col-lg-4 col-md-6">
+              <article class="blog-card">
+                <span class="eyebrow">{post.category}</span>
+                <h3>{post.title}</h3>
+                <p>{post.excerpt}</p>
+                <a class="btn-brand mt-3" href="/contact">Discuss This Topic</a>
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</MainLayout>
